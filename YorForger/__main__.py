@@ -250,7 +250,9 @@ def start(update: Update, context: CallbackContext):
             )
     else:
                 update.effective_message.reply_photo(
-            START_IMG, caption=f"**Hello, I'm Yor Forger!** \n\n**I'm Working Properly** \n\n**My Darling : [AUGSTUN🝪ZECROX](https://t.me/Aug0felix)** \n\n**My Manager : [Sneha](https://t.me/Sneha_UwU_OwO)** \n\n<b>Haven't slept since:</b> <code>{uptime}</code>",
+            START_IMG, caption="<b>Hello, I'm Yor Forger!\nI'm Working Properly\nMy Darling and Owner: <a href="https://t.me/Aug0felix">AUGSTUN🝪ZECROX</a>\nMy Manager : <a href="https://t.me/Sneha_UwU_OwO">Sneha</a></b>\n <code>{}</code>".format(
+                uptime,
+            ),
             parse_mode=ParseMode.HTML,
              reply_markup=InlineKeyboardMarkup(
                 [
