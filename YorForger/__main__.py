@@ -253,7 +253,7 @@ def start(update: Update, context: CallbackContext):
             START_IMG, caption="<b>Hello, I'm Yor Forger!\nI'm Working Properly\nMy Darling and Owner: <a href='https://t.me/Aug0felix'>AUGSTUN🝪ZECROX</a>\nMy Manager : <a href='https://t.me/Sneha_UwU_OwO'>Sneha</a></b>\n <code>{}</code>".format(
                 uptime,
             ),
-            parse_mode=ParseMode=HTML, parse_mode=ParseMode.MARKDOWN,
+            parse_mode=ParseMode.HTML,
 
              reply_markup=InlineKeyboardMarkup(
                 [
