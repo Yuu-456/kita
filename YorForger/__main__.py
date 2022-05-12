@@ -113,11 +113,18 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-            text="⚙️ Support", url=f"https://t.me/yorforgersupportgrp"),                    
+            text="⚙️ Support", url=f"https://t.me/Komisansupport"),                    
         InlineKeyboardButton(
             text="🔐 Help", callback_data="help_back"
         ),
     ],
+    [
+        InlineKeyboardButton(
+            text="Wallpaper Channel", url=f"https://t.me/animengameswall"),                    
+        InlineKeyboardButton(
+            text="Anime News Channel", url=f"https://t.me/AnimeandMangaUpdate"),
+    ],
+    
 ]
 
                     
@@ -250,7 +257,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
                 update.effective_message.reply_photo(
-            START_IMG, caption="<b>Hello, I'm Yor Forger!\nI'm Working Properly\nMy Darling and Owner: <a href='https://t.me/Aug0felix'>AUGSTUN🝪ZECROX</a>\nMy Manager : <a href='https://t.me/Sneha_UwU_OwO'>Sneha</a></b>\n <code>{}</code>".format(
+            START_IMG, caption="<b>Hello, I'm Yor Forger!\nI'm Working Properly.</b>\nI am alive since: <code>{}</code>".format(
                 uptime,
             ),
             parse_mode=ParseMode.HTML,
@@ -258,7 +265,13 @@ def start(update: Update, context: CallbackContext):
              reply_markup=InlineKeyboardMarkup(
                 [
                   [
-                  InlineKeyboardButton(text="❤Sᴜᴘᴘᴏʀᴛ❤", url="https://t.me/yorforgersupportgrp")
+                  InlineKeyboardButton(text="Owner", url="https://t.me/Aug0felix")
+                  ],
+                  [
+                  InlineKeyboardButton(text="Manager", url="https://t.me/Sneha_UwU_OwO")
+                  ],
+                  [
+                  InlineKeyboardButton(text="❤Sᴜᴘᴘᴏʀᴛ❤", url="https://t.me/Komisansupport")
                   ],
                   [
                   InlineKeyboardButton(text="🔰Uᴘᴅᴀᴛᴇs🔰", url="https://t.me/yorforgerbotupdates")
@@ -653,7 +666,7 @@ def main():
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
             dispatcher.bot.send_photo(
-                "@yorforgersupportgrp",
+                "@https://t.me/Komisansupport",
                 "https://telegra.ph/file/48a7b1f82d491d38b3ca9.jpg",
                 "I Am Alive Now!",
                 parse_mode=ParseMode.MARKDOWN,

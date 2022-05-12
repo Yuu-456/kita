@@ -233,10 +233,10 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="☎️ Support", url="https://t.me/Yorsansupport"
+                                    text="☎️ Support", url="https://t.me/Komisansupport"
                                 ),
                                 InlineKeyboardButton(
-                                    text="Updates 📡", url="https://t.me/Weeb_oo"
+                                    text="Updates 📡", url="https://t.me/yorforgerbotupdates"
                                 ),
                             ]
                         ],
