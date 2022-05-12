@@ -115,6 +115,11 @@ buttons = [
         InlineKeyboardButton(
             text="⚙️ Support", url=f"https://t.me/Komisansupport"),                    
         InlineKeyboardButton(
+            text="Updates",  url=f"https://t.me/yorforgerbotupdates"
+        ),
+    ],
+    [
+        InlineKeyboardButton(
             text="🔐 Help", callback_data="help_back"
         ),
     ],
