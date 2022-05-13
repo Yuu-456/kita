@@ -126,8 +126,6 @@ buttons = [
     [
         InlineKeyboardButton(
             text="Wallpaper Channel", url=f"https://t.me/animengameswall"),                    
-        InlineKeyboardButton(
-            text="Anime News Channel", url=f"https://t.me/AnimeandMangaUpdate"),
     ],
     
 ]
