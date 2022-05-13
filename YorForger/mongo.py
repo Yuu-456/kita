@@ -6,6 +6,7 @@ from YorForger import MONGO_DB_URI
 from pymongo import MongoClient
 from pymongo.errors import ServerSelectionTimeoutError
 from YorForger.conf import get_int_key, get_str_key
+from YorForger.utlis.logger import log
 
 
 MONGO_PORT = get_int_key("27017")
