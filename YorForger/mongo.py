@@ -14,8 +14,8 @@ MONGO_DB = "Yor"
 
 
 client = MongoClient()
-client = MongoClient(MONGO_DB_URI)[MONGO_DB]
-motor = motor_asyncio.AsyncIOMotorClient(MONGO_DB_URI)
+client = MongoClient(MONGO_DB_URI, MONGO_PORT)[MONGO_DB]
+motor = motor_asyncio.AsyncIOMotorClient(MONGO_DB_URI, MONGO_PORT)
 db = motor[MONGO_DB]
 db = client["Yor"]
 try:
