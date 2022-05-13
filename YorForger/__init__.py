@@ -15,7 +15,7 @@ from telethon.sessions import MemorySession
 StartTime = time.time()
 
 # enable logging
-FORMAT = "[] %(message)s"
+FORMAT = "[YorForger] %(message)s"
 logging.basicConfig(
     handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()],
     level=logging.INFO,
