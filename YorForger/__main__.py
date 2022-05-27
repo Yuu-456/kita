@@ -84,50 +84,46 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
-HELP_IMG = "https://telegra.ph//file/b3aedf8d65276f8241556.jpg"
+HELP_IMG = "https://telegra.ph/file/bee6f9297ff8d3e2ec1c7.jpg"
 HELP_MSG = "Click the button below to get help menu in your pm."
-START_MSG = "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>"
-START_IMG = "https://telegra.ph/file/5ed8d6ab91ea9b9eaaad0.jpg"
+START_MSG = "I'm Working Out!\n<b>Haven't stopped since:</b> <code>{}</code>"
+START_IMG = "https://telegra.ph/file/af0931a6fa8ec665caa65.jpg"
     
 PM_START_TEXT = """
-────「 [{}](https://telegra.ph/file/a15eb346fec9a0b1b2696.mp4) 」────
-Heyyo `{}`,  here to help,
-*I am an Anime themed advance group management bot with a lot of awesome Features*
+────「 [{}](https://telegra.ph/file/6ac7223d0a27ffcd3831b.jpg) 」────
+Konichiwa `{}`, here to help,
+*I am an Anime based group management bot with a lot of awesome Features*
 ┏━━━━━━━━━━━━━━━━━━━━
-┣♡ *Uptime:* `{}`
-➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
-┣♡ `{}` *users, across* `{}` *chats.*
+× *Working since:* `{}`
+➖➖➖➖➖➖➖➖➖➖➖➖➖
+× `{}` *Teammates, across* `{}` *Chatgroups.*
 ┗━━━━━━━━━━━━━━━━━━━━
-*Try The Help Buttons Below To Know My Abilities And Charm* ××
+*Try The Help Buttons Below To Know My Abilities And Charm*
 """
 
 GROUP_START_TEXT = """
 I'm awake already!
-Haven't slept since: {}
+Haven't stopped since: {}
 """
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="💖 ADD ME IN YOUR GROUP",url="http://t.me/Yor_forger_spyxfamily_bot?startgroup=true"),
+            text="Invite Me At Your Residence",url="http://t.me/kitaxrobot?startgroup=true"),
     ],
     [
         InlineKeyboardButton(
-            text="⚙️ Support", url=f"https://t.me/Komisansupport"),                    
+            text="×Support×", url=f"https://t.me/kitaxsupport"),                    
         InlineKeyboardButton(
-            text="Updates",  url=f"https://t.me/yorforgerbotupdates"
+            text="×Updates×",  url=f"https://t.me/kitaxupdates"
         ),
     ],
     [
         InlineKeyboardButton(
-            text="🔐 Help", callback_data="help_back"
+            text="--Help--", callback_data="help_back"
         ),
     ],
-    [
-        InlineKeyboardButton(
-            text="Wallpaper Channel", url=f"https://t.me/animengameswall"),                    
-    ],
-    
+   
 ]
 
                     
@@ -260,7 +256,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
                 update.effective_message.reply_photo(
-            START_IMG, caption="<b>Hello, I'm Yor Forger!\nI'm Working Properly.</b>\nI am alive since: <code>{}</code>".format(
+            START_IMG, caption="<b>Ara Ara, I'm Kita shinsuke!\nI'm Working Properly.</b>\nI am alive since: <code>{}</code>".format(
                 uptime,
             ),
             parse_mode=ParseMode.HTML,
@@ -268,16 +264,16 @@ def start(update: Update, context: CallbackContext):
              reply_markup=InlineKeyboardMarkup(
                 [
                   [
-                  InlineKeyboardButton(text="Owner", url="https://t.me/Aug0felix")
+                  InlineKeyboardButton(text="Developer", url="https://t.me/voidaryan")
                   ],
                   [
-                  InlineKeyboardButton(text="Manager", url="https://t.me/Sneha_UwU_OwO")
+                  InlineKeyboardButton(text="Kita's Darling", url="https://t.me/Achillues")
                   ],
                   [
-                  InlineKeyboardButton(text="❤Sᴜᴘᴘᴏʀᴛ❤", url="https://t.me/Komisansupport")
+                  InlineKeyboardButton(text="Sᴜᴘᴘᴏʀᴛ❤", url="https://t.me/kitaxsupport")
                   ],
                   [
-                  InlineKeyboardButton(text="🔰Uᴘᴅᴀᴛᴇs🔰", url="https://t.me/yorforgerbotupdates")
+                  InlineKeyboardButton(text="🔰Uᴘᴅᴀᴛᴇs🔰", url="https://t.me/kitaxupdates")
                   ]
                 ]
             ),
@@ -637,7 +633,7 @@ def donate(update: Update, context: CallbackContext):
     bot = context.bot
     update.effective_message.reply_text(
         "You can also donate to the person currently running me "
-        "[here](https://ko-fi.com/AuraMoon55)",
+        "[here](t.me/voidaryan)",
         parse_mode=ParseMode.MARKDOWN,
     )
 
@@ -669,9 +665,9 @@ def main():
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
             dispatcher.bot.send_photo(
-                "@https://t.me/Komisansupport",
-                "https://telegra.ph/file/48a7b1f82d491d38b3ca9.jpg",
-                "I Am Alive Now!",
+                "@https://t.me/kitaxsupport",
+                "https://telegra.ph/file/af0931a6fa8ec665caa65.jpg",
+                "I Am Ready To Compete!",
                 parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:
