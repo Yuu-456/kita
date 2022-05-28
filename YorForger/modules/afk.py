@@ -40,7 +40,7 @@ def afk(update, _):
     REDIS.set(f"afk_time_{user.id}", start_afk_time)
     fname = user.first_name
     try:
-        message.reply_text(f"{fname} is now dead!")
+        message.reply_text(f"{fname} : Afk!")
     except BadRequest:
         pass
 
@@ -64,7 +64,7 @@ def no_longer_afk(update, _):
         firstname = update.effective_user.first_name
         try:
             message.reply_text(
-                f"{firstname} is back alive!\nYou were dead for: {end_afk_time}"
+                f"{firstname} Is Back!\nWas Afk For: {end_afk_time}"
             )
         except BadRequest:
             return
