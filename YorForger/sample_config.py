@@ -13,7 +13,7 @@ if not __name__.endswith("sample_config"):
     sys.exit(1)
 
 def get_user_list(config, key):
-    with open("{}/YorForger/{}".format(os.getcwd(), config), "r") as json_file:
+    with open("{}/Kita/{}".format(os.getcwd(), config), "r") as json_file:
         return json.load(json_file)[key]
 
 

@@ -164,7 +164,7 @@ def info(update, context):
         disaster_level_present = True
 
     if disaster_level_present:
-        text += ' [<a href="https://t.me/yorforgerbotupdates/8">?</a>]'
+        text += ' [<a href="https://t.me/kitaxupdates/4">?</a>]'
 
     try:
         memstatus = chat.get_member(user.id).status

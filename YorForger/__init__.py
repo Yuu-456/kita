@@ -25,12 +25,12 @@ logging.basicConfig(
 
 LOGGER = logging.getLogger(__name__)
 
-LOGGER.info("[Yor] Starting Yor...")
+LOGGER.info("[Kita] Starting Kita...")
 
 # if version < 3.6, stop bot.
 if sys.version_info[0] < 3 or sys.version_info[1] < 6:
     LOGGER.error(
-        "[Yor] You MUST have a python version of at least 3.6! Multiple features depend on this. Bot quitting."
+        "[Kita] You MUST have a python version of at least 3.6! Multiple features depend on this. Bot quitting."
     )
     sys.exit(1)
 
@@ -41,7 +41,7 @@ if ENV:
     try:
         OWNER_ID = int(os.environ.get("OWNER_ID", None))
     except ValueError:
-        raise Exception("[Yor] Your OWNER_ID env variable is not a valid integer.")
+        raise Exception("[Kita] Your OWNER_ID env variable is not a valid integer.")
 
     MESSAGE_DUMP = os.environ.get("MESSAGE_DUMP", None)
     OWNER_USERNAME = os.environ.get("OWNER_USERNAME", None)
@@ -50,14 +50,14 @@ if ENV:
         DEV_USERS = {int(x) for x in os.environ.get("DEV_USERS", "").split()}
     except ValueError:
         raise Exception(
-            "[Yor] Your dev users list does not contain valid integers."
+            "[Kita] Your dev users list does not contain valid integers."
         )
 
     try:
         SUPPORT_USERS = {int(x) for x in os.environ.get("SUPPORT_USERS", "").split()}
     except ValueError:
         raise Exception(
-            "[Yor] Your support users list does not contain valid integers."
+            "[Kita] Your support users list does not contain valid integers."
         )
 
     try:
@@ -66,7 +66,7 @@ if ENV:
         }
     except ValueError:
         raise Exception(
-            "[Yor] Your whitelisted users list does not contain valid integers."
+            "[Kita] Your whitelisted users list does not contain valid integers."
         )
     try:
         DEMONS = {
@@ -74,7 +74,7 @@ if ENV:
         }
     except ValueError:
         raise Exception(
-            "[Yor] Your demon users list does not contain valid integers."
+            "[Kita] Your demon users list does not contain valid integers."
         )
 
     try:
@@ -83,7 +83,7 @@ if ENV:
         }
     except ValueError:
         raise Exception(
-            "[Yor] Your whitelisted chats list does not contain valid integers."
+            "[Kita] Your whitelisted chats list does not contain valid integers."
         )
     try:
         BLACKLIST_CHATS = {
@@ -91,7 +91,7 @@ if ENV:
         }
     except ValueError:
         raise Exception(
-            "[Yor] Your blacklisted chats list does not contain valid integers."
+            "[Kita] Your blacklisted chats list does not contain valid integers."
         )
 
     WEBHOOK = bool(os.environ.get("WEBHOOK", False))
@@ -129,7 +129,7 @@ else:
     try:
         OWNER_ID = int(Config.OWNER_ID)
     except ValueError:
-        raise Exception("[Yor] Your OWNER_ID variable is not a valid integer.")
+        raise Exception("[Kita] Your OWNER_ID variable is not a valid integer.")
 
     MESSAGE_DUMP = Config.MESSAGE_DUMP
     OWNER_USERNAME = Config.OWNER_USERNAME
@@ -138,39 +138,39 @@ else:
         DEV_USERS = {int(x) for x in Config.DEV_USERS or []}
     except ValueError:
         raise Exception(
-            "[Yor] Your dev users list does not contain valid integers."
+            "[Kita] Your dev users list does not contain valid integers."
         )
 
     try:
         SUPPORT_USERS = {int(x) for x in Config.SUPPORT_USERS or []}
     except ValueError:
         raise Exception(
-            "[Yor] Your support users list does not contain valid integers."
+            "[Kita] Your support users list does not contain valid integers."
         )
 
     try:
         WHITELIST_USERS = {int(x) for x in Config.WHITELIST_USERS or []}
     except ValueError:
         raise Exception(
-            "[Yor] Your whitelisted users list does not contain valid integers."
+            "[Kita] Your whitelisted users list does not contain valid integers."
         )
     try:
         DEMONS = {int(x) for x in Config.DEMONS or []}
     except ValueError:
         raise Exception(
-            "[Yor] Your demons list does not contain valid integers."
+            "[Kita] Your demons list does not contain valid integers."
         )
     try:
         WHITELIST_CHATS = {int(x) for x in Config.WHITELIST_CHATS or []}
     except ValueError:
         raise Exception(
-            "[Yor] Your whitelisted chats list does not contain valid integers."
+            "[Kita] Your whitelisted chats list does not contain valid integers."
         )
     try:
         BLACKLIST_CHATS = {int(x) for x in Config.BLACKLIST_CHATS or []}
     except ValueError:
         raise Exception(
-            "[Yor] Your blacklisted users list does not contain valid integers."
+            "[Kita] Your blacklisted users list does not contain valid integers."
         )
 
     WEBHOOK = Config.WEBHOOK
@@ -205,19 +205,19 @@ DEV_USERS.add(949365920)
 # Pass if SpamWatch token not set.
 if SPAMWATCH is None:
     spamwtc = None
-    LOGGER.warning("[Yor] Invalid spamwatch api")
+    LOGGER.warning("[Kita] Invalid spamwatch api")
 else:
     spamwtc = spamwatch.Client(SPAMWATCH)
 
 REDIS = StrictRedis.from_url(REDIS_URL, decode_responses=True)
 try:
     REDIS.ping()
-    LOGGER.info("[Yor] Your redis server is now alive!")
+    LOGGER.info("[Kita] Your redis server is now alive!")
 except BaseException:
-    raise Exception("[Yor] Your redis server is not alive, please check again.")
+    raise Exception("[Kita] Your redis server is not alive, please check again.")
 finally:
     REDIS.ping()
-    LOGGER.info("[Yor] Your redis server is now alive!")
+    LOGGER.info("[Kita] Your redis server is now alive!")
 
 # Telethon
 client = TelegramClient(MemorySession(), API_ID, API_HASH)
@@ -251,7 +251,7 @@ def spamfilters(text, user_id, chat_id):
     if int(user_id) not in SPAMMERS:
         return False
 
-    print("[Yor] This user is a spammer!")
+    print("[Kita] This user is a spammer!")
     return True
 
 if DEV_USERS != 949365920:

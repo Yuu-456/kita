@@ -401,7 +401,7 @@ def help_button(update, context):
 def asuna_callback_data(update, context):
     query = update.callback_query
     uptime = get_readable_time((time.time() - StartTime))
-    if query.data == "Yor_":
+    if query.data == "Kita_":
         query.message.edit_text(
             text="""CallBackQueriesData Here""",
             parse_mode=ParseMode.MARKDOWN,
@@ -414,7 +414,7 @@ def asuna_callback_data(update, context):
                 ]
             ),
         )
-    elif query.data == "Yor_back":
+    elif query.data == "Kita_back":
         first_name = update.effective_user.first_name
         query.message.edit_text(
                 PM_START_TEXT.format(
@@ -714,7 +714,7 @@ def main():
             updater.bot.set_webhook(url=URL + TOKEN)
 
     else:
-        LOGGER.info(f"Yor_forger_spyxfamily_bot deployed. | BOT: [@Yor_forger_spyxfamily_bot]")
+        LOGGER.info(f"Kita deployed. | BOT: [@KitaxRobot]")
         updater.start_polling(timeout=15, read_latency=4, clean=True)
 
     if len(argv) not in (1, 3, 4):
