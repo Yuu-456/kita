@@ -608,10 +608,10 @@ DEMOTE_HANDLER = CommandHandler(
     "demote", demote, pass_args=True, filters=Filters.chat_type.groups, run_async=True
 )
 SET_TITLE_HANDLER = DisableAbleCommandHandler(
-    "settitle", set_title, pass_args=True, run_async=True
+    "title", set_title, pass_args=True, run_async=True
 )
 ADMINLIST_HANDLER = DisableAbleCommandHandler(
-    "adminlist", adminlist, filters=Filters.chat_type.groups, run_async=True
+    "admins", adminlist, filters=Filters.chat_type.groups, run_async=True
 )
 
 dispatcher.add_handler(PIN_HANDLER)
