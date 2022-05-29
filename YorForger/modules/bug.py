@@ -14,7 +14,7 @@ from YorForger import (
     OWNER_USERNAME as owner_usn,
     SUPPORT_CHAT as log,
 )
-from YorForger.utils.errors import capture_err
+from YorForger.errors import capture_err
 
 
 def content(msg: Message) -> [None, str]:
