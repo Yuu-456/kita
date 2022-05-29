@@ -44,8 +44,8 @@ def void(update: Update, context: CallbackContext):
                 [
                 InlineKeyboardButton(text="【Usertag】", url="https://t.me/void_network/103"),
                 InlineKeyboardButton(text="【Owner Sama】", url="https://t.me/voidxtoxic")
-                ]
-                [InlineKeyboardButton(text="【V๏ɪ፝֟𝔡】Network", url="https://t.me/voidxnetwork"),]
+                ],
+                [InlineKeyboardButton(text="【V๏ɪ፝֟𝔡】Network", url="https://t.me/voidxnetwork")]
             ]
         ),
     )
