@@ -10,18 +10,18 @@ from html import escape
 from pyrogram import filters
 from bs4 import BeautifulSoup as bs 
 from cloudscraper import CloudScraper
-from horisan import pbot 
+from YorForger import pbot 
 from bs4 import BeautifulSoup
 from urllib.parse import quote as urlquote
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram import TelegramError, Update, CallbackQuery
 from telegram.ext import CallbackContext, CallbackQueryHandler
 from telegram.utils.helpers import mention_html
-from horisan import dispatcher
-from horisan.modules.disable import DisableAbleCommandHandler
+from YorForger import dispatcher
+from YorForger.modules.disable import DisableAbleCommandHandler
 
 # converting a gif into a sticker method
-from horisan.services.convert import convert_gif 
+from YorForger.services.convert import convert_gif 
 
 combot_stickers_url = "https://combot.org/telegram/stickers?q="
  
@@ -781,7 +781,7 @@ __mod_name__ = "【ꜱᴛɪᴄᴋᴇʀꜱ】"
 STICKERID_HANDLER = DisableAbleCommandHandler("stickerid", stickerid, run_async=True)
 GETSTICKER_HANDLER = DisableAbleCommandHandler("getsticker", getsticker, run_async=True)
 GETVIDSTICKER_HANDLER = DisableAbleCommandHandler("getvidsticker", getvidsticker, run_async=True)
-KANG_HANDLER = DisableAbleCommandHandler("kang", kang, pass_args=True, run_async=True)
+KANG_HANDLER = DisableAbleCommandHandler("kang","steal", kang, pass_args=True, run_async=True)
 DEL_HANDLER = DisableAbleCommandHandler("delsticker", delsticker, run_async=True)
 STICKERS_HANDLER = DisableAbleCommandHandler("stickers", cb_sticker, run_async=True)
 VIDEO_HANDLER = DisableAbleCommandHandler ("getvideo", video, run_async=True)
