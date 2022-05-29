@@ -80,7 +80,7 @@ def gban(update, context):
         return
 
     if user_id == OWNER_ID:
-        message.reply_text("Nice try, He is my Darling I'm never gonna gban him.")
+        message.reply_text("Nice try, He is my boss I'm never gonna gban him.")
         return
 
     if int(user_id) in DEV_USERS:
