@@ -205,7 +205,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
             if new_mem.id == OWNER_ID:
                 text = f"Every One Behave Our **President** Is Here"
                 update.effective_message.reply_photo("https://telegra.ph/file/bc082487f0b8a3cace602.jpg",
-                    text,
+                    caption = text,
                     reply_to_message_id=reply,
                 )
                 welcome_log = (
@@ -218,7 +218,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
             if new_mem.id == 949365920:
                     text = f"Every One Behave My **Head Developer**Is Here"
                     update.effective_message.reply_photo("https://telegra.ph/file/ff7ef0199a298b5518fc5.jpg",
-                        text,
+                        caption = text,
                         reply_to_message_id=reply,
                     )
                     welcome_log = (
@@ -232,21 +232,21 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
             if new_mem.id in DEV_USERS:
                 text = f"Be Cool! My **Vice President** just joined the group!",
                 update.effective_message.reply_text(
-                text,
+                caption = text,
                 reply_to_message_id=reply,
                 )
                 continue
             if new_mem.id == DRAGONS:
                 text = f"My **ADVISOR** just joined the group!",
                 update.effective_message.reply_text(
-                    text,
+                    caption = text,
                     reply_to_message_id=reply,
                     )
                 continue
             if new_mem.id == DEMONS:
                 text = f"My **Secretary** just joined the group!",
                 update.effective_message.reply_text(
-                    text,
+                    caption = text,
                     reply_to_message_id=reply,
                     )
                 continue
