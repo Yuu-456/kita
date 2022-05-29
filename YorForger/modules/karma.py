@@ -3,10 +3,10 @@ from pyrogram import filters
 from aiohttp import ClientSession
 from Python_ARQ import ARQ
 
-from horisan import pbot as app, BOT_ID
-from horisan.utils.errors import capture_err
-from horisan.utils.permissions import adminsOnly
-from horisan.ex_plugins.dbfunctions import (
+from YorForger import pbot as app, BOT_ID
+from YorForger.utils.errors import capture_err
+from YorForger.utils.permissions import adminsOnly
+from YorForger.ex_plugins.dbfunctions import (
     alpha_to_int,
     get_karma,
     get_karmas,
@@ -16,8 +16,8 @@ from horisan.ex_plugins.dbfunctions import (
     karma_on,
     update_karma,
 )
-from horisan.utils.filter_groups import karma_negative_group, karma_positive_group
-from horisan import arq
+from YorForger.utils.filter_groups import karma_negative_group, karma_positive_group
+from YorForger import arq
 
 regex_upvote = r"^((?i)\+|\+\+|\+1|thx|thanx|thanks|pro|cool|good|👍)$"
 regex_downvote = r"^(\-|\-\-|\-1|👎|noob|weak)$"
