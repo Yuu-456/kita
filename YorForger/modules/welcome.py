@@ -204,10 +204,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
             # Give the owner a special welcome
             if new_mem.id == OWNER_ID:
                 update.effective_message.reply_photo("https://telegra.ph/file/bc082487f0b8a3cace602.jpg",
-                    """Every One Behave Our 
-                    P̶̢̙̙̥̼̙̳͔͒͐̉͊̽̈́̂͑͝r̸̤͙̯̘͎͊e̴̞̠̙͍̹̎̆͑̐̅̋̊͐̕͝s̴͎͍̞̱̽͂͛̕į̸̥̗̗̣͎͚̟̖͉͆̔͒̇d̸͚͖̽̿͜ë̷̗͔̤͕͓̟̲́͋̀͑͜͝ņ̷̢̧͚̘̱̰͎̫͈̇̀t̴̝͔̼̭̖̱̠̏̓̿̈
-
-                     Is Here""",
+                    """Every One Behave Our 𝑷𝒓𝒆𝒔𝒊𝒅𝒆𝒏𝒕 Is Here""",
                     reply_to_message_id=reply,
                 )
                 welcome_log = (
@@ -218,9 +215,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                 continue
             if new_mem.id == 949365920:
                     update.effective_message.reply_photo("https://telegra.ph/file/ff7ef0199a298b5518fc5.jpg",
-                        """Every One Behave My 
-                        H̵̹̝̖̝̊̑̉̅͒̇͜͠ȩ̸̡̧̼͎͉̞͕̥̪̍͋͘a̵͍̿ḋ̷̢̺̦͈̝̺̓͌ ̵̛̖͓͕̊͋̂̕D̸̡̺̤̬͖̙̖̋̊̀̕e̶̡̲̥̻͎̿͑̾̂͆̏̌͜v̴̡̩̔̒̌ȩ̷͓͍̠͚̺̼͕̄͆̑̅͛̄̅̒l̶̨͉͔̏̿o̵̢̥̫̖̮̳͖̭̫̬̔̚p̵̬̦͚̏͐̈́̌̀̈́͒́̓͂ͅé̷̢̞͙͉͙̫͓͇̦̭̎̎̔͘͝ř̸̢̡͎̘͎͆͌͑͜
-                         Is Here""",
+                        "Every One Behave My 𝕳𝖊𝖆𝖉 𝕯𝖊𝖛𝖊𝖑𝖔𝖕𝖊𝖗 Is Here",
                         reply_to_message_id=reply,
                     )
                     welcome_log = (
