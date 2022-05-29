@@ -1,8 +1,8 @@
 import textwrap
 import os
 from PIL import Image, ImageFont, ImageDraw
-from horisan.events import register
-from horisan import LOGGER, TEMP_DOWNLOAD_DIRECTORY, telethn as bot
+from YorForger.events import register
+from YorForger import LOGGER, TEMP_DOWNLOAD_DIRECTORY, telethn as bot
 
 
 @register(pattern="^/mmf ?(.*)")
@@ -40,7 +40,7 @@ async def drawText(image_path, text):
     if os.name == "nt":
         fnt = "ariel.ttf"
     else:
-        fnt = "./horisan/resources/default.ttf"
+        fnt = "./YorForger/resources/default.ttf"
     m_font = ImageFont.truetype(fnt, int((60 / 600) * i_width))
     if ";" in text:
         upper_text, lower_text = text.split(";")
