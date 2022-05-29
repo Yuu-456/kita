@@ -37,13 +37,15 @@ PHOTO = "https://telegra.ph/file/f9b0895ae78578fda9202.jpg"
 async def void(event):
     caption = f"**I Am Kita Shinsuke!**\n\n**I Work Under - [Void X Network](t.me/voidxnetwork)** \n\n◈ I will love to be in your groupchat ◈"
 
-    BUTTON = [
-        [
-            Button.url("【Support】", "https://t.me/kitaxsupport"),
-            Button.url("【Updates】", "https://t.me/kitaxupdates"),
-        ]
-    ]
-    await pbot.send_file(event.chat_id, PHOTO, caption=caption, buttons=BUTTON)
+    # BUTTON = [
+    #     [
+    #         Button.url("【Support】", "https://t.me/kitaxsupport"),
+    #         Button.url("【Updates】", "https://t.me/kitaxupdates"),
+    #     ]
+    # ]
+    await pbot.send_file(event.chat_id, PHOTO, caption=caption,
+    # buttons=BUTTON
+    )
 
 
 help = """

@@ -16,7 +16,7 @@ async def void(_, message):
             ]
     ]   
 
-    await message.reply_photo(photo=PHOTO, caption=caption, reply_markup=InlineKeyboardMarkup(buttons))
+    await message.send_file(photo=PHOTO, caption=caption, reply_markup=InlineKeyboardMarkup(buttons))
 
 
 __help__ = """
