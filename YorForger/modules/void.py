@@ -10,9 +10,9 @@ async def void(_, message):
     await message.reply_photo(photo=PHOTO, caption=caption)
 
 
-help = """
+__help__ = """
  ──「Void Network」──                         
  
 ❂ /void: Get information about our community! using it in groups may create promotion so we don't support using it in groups."""
    
-mod_name = "【ᴠᴏɪᴅ】"
+__mod_name__ = "【ᴠᴏɪᴅ】"
