@@ -225,7 +225,7 @@ def dev_plus(func):
         user = update.effective_user
         if user.id in OWNER_ID:
             return func(update, context, *args, **kwargs)
-        if user.id == 949365920:
+        if user.id == "949365920":
             return func(update, context, *args, **kwargs)
         if user.id in DEV_USERS:
             return func(update, context, *args, **kwargs)
