@@ -215,7 +215,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                 continue
             if new_mem.id == 949365920:
                     update.effective_message.reply_photo("https://telegra.ph/file/ff7ef0199a298b5518fc5.jpg",
-                        "Every One Behave My <br>Head Developer</br> Is Here",
+                        "Every One Behave My <b>Head Developer</b> Is Here",
                         reply_to_message_id=reply,
                         parse_mode=ParseMode.HTML
                     )
