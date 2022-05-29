@@ -33,10 +33,12 @@ __mod_name__ = "【ᴠᴏɪᴅ】"
 
 
 
-def void(update: Update, context: CallbackContext):
+async def void(update: Update, context: CallbackContext):
+
+    TEXT = "Welcome to [【V๏ɪ፝֟𝔡】Network](https://t.me/voidxnetwork) \n\n◈ Void is an anime based Community with a motive to spread love and peace around telegram. Go through the channel and join the Community if it draws your attention. ◈"
 
     update.effective_message.reply_photo(
-        PHOTO, caption= "Welcome to [【V๏ɪ፝֟𝔡】Network](https://t.me/voidxnetwork) \n\n◈ Void is an anime based Community with a motive to spread love and peace around telegram. Go through the channel and join the Community if it draws your attention. ◈",
+        PHOTO, caption= TEXT,
         parse_mode=ParseMode.HTML,
 
             reply_markup=InlineKeyboardMarkup(
@@ -51,5 +53,5 @@ def void(update: Update, context: CallbackContext):
     )
 
 
-void_handler = CommandHandler("void", void)
+void_handler = CommandHandler("void", void, run_async = True)
 dispatcher.add_handler(void_handler)
