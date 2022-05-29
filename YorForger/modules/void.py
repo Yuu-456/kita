@@ -37,7 +37,7 @@ def void(update: Update, context: CallbackContext):
 
     update.effective_message.reply_photo(
         PHOTO, caption= f"Welcome to [【V๏ɪ፝֟𝔡】Network](https://t.me/voidxnetwork) \n\n◈ Void is an anime based Community with a motive to spread love and peace around telegram. Go through the channel and join the Community if it draws your attention. ◈",
-        parse_mode=ParseMode.HTML,
+        # parse_mode=ParseMode.HTML,
 
             reply_markup=InlineKeyboardMarkup(
             [
@@ -45,6 +45,7 @@ def void(update: Update, context: CallbackContext):
                 InlineKeyboardButton(text="【Usertag】", url="https://t.me/void_network/103"),
                 InlineKeyboardButton(text="【Owner Sama】", url="https://t.me/voidxtoxic")
                 ]
+                [InlineKeyboardButton(text="【V๏ɪ፝֟𝔡】Network", url="https://t.me/voidxnetwork"),]
             ]
         ),
     )
