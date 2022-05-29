@@ -5,7 +5,7 @@ import re
 import os
 import asyncio
 from typing import List
-from horisan.modules.sudoers import bot_sys_stats
+from YorForger.modules.sudoers import bot_sys_stats
 
 import requests
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
@@ -18,9 +18,9 @@ from telegram.ext import (
     MessageHandler,
 )
 
-from horisan import StartTime, dispatcher, pbot
+from YorForger import StartTime, dispatcher, pbot
 from pyrogram import filters
-from horisan.modules.disable import DisableAbleCommandHandler
+from YorForger.modules.disable import DisableAbleCommandHandler
 
 sites_list = {
     "Telegram": "https://api.telegram.org",
@@ -29,7 +29,7 @@ sites_list = {
     "Jikan": "https://api.jikan.moe/v3"
 }
 
-PING_IMG = "https://telegra.ph/file/99194183d658bbd930fe8.jpg"
+PING_IMG = "https://telegra.ph/file/8afeb5ea5c795863835e7.jpg"
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -101,7 +101,7 @@ def ping(update: Update, context: CallbackContext):
             reply_markup=InlineKeyboardMarkup(
                 [
                   [
-                  InlineKeyboardButton(text="Hori System Stats", callback_data="stats_callback")
+                  InlineKeyboardButton(text="Kita System Stats", callback_data="stats_callback")
                   ]
                 ]
             ),
@@ -131,7 +131,7 @@ def pingall(update: Update, context: CallbackContext):
         reply_markup=InlineKeyboardMarkup(
                 [
                   [
-                  InlineKeyboardButton(text="Hori System Stats", callback_data="stats_callback")
+                  InlineKeyboardButton(text="Kita System Stats", callback_data="stats_callback")
                   ]
                 ]
             ),
@@ -146,7 +146,7 @@ dispatcher.add_handler(PINGALL_HANDLER)
 
 
 __help__ = """
-/ping: Hori Pong
+/ping:  Pong
 """
 
 __mod_name__ = "【ᴘɪɴɢ】"
