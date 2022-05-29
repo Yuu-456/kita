@@ -8,13 +8,13 @@ from pyrogram.types import (
     Message,
 )
 
-from horisan import pbot as Client
-from horisan import (
+from YorForger import pbot as Client
+from YorForger import (
     OWNER_ID as owner_id,
     OWNER_USERNAME as owner_usn,
     SUPPORT_CHAT as log,
 )
-from horisan.utils.errors import capture_err
+from YorForger.utils.errors import capture_err
 
 
 def content(msg: Message) -> [None, str]:
@@ -50,10 +50,10 @@ async def bug(_, msg: Message):
     bug_report = f"""
 **#BUG : ** **@{owner_usn}**
 **From User : ** **{mention}**
-**User ID : ** **{user_id}**
+**User ID : ** **`{user_id}`**
 **Group : ** **{chat_username}**
 **Bug Report : ** **{bugs}**
-**Event Stamp : ** **{datetimes}**"""
+**Event Stamp : ** **`{datetimes}`**"""
 
     
     if msg.chat.type == "private":
@@ -74,7 +74,7 @@ async def bug(_, msg: Message):
         if bugs:
             await msg.reply_text(
                 f"<b>Bug Report : {bugs}</b>\n\n"
-                "✅ <b>The bug was successfully reported to @HorixSupport !</b>",
+                "✅ <b>The bug was successfully reported to [Kita Support](t.me/kitaxsupport) !</b>",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
