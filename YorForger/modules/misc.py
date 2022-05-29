@@ -589,10 +589,10 @@ DEVLIST_HANDLER = CommandHandler(
     "devlist", dev_ids,  run_async=True
 )
 SUDOLIST_HANDLER = CommandHandler(
-    "advisors", sudo_ids, run_async=True
+    ["advisors", "sudos", "sudolist"], sudo_ids, run_async=True
 )
 DEMONLIST_HANDLER = CommandHandler(
-    "secretary", demon_ids, run_async=True
+    ["secretary", "demons", "demonlist"], demon_ids, run_async=True
 )
 REDDIT_MEMES_HANDLER = DisableAbleCommandHandler("rmeme", rmemes, run_async=True)
 SRC_HANDLER = CommandHandler(
