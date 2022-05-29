@@ -45,6 +45,8 @@ class Config(object):
     SUPPORT_USERS = get_user_list("elevated_users.json", "sudos") # List of id's (not usernames) for users which are allowed to gban, but can also be banned.
     WHITELIST_USERS = get_user_list("elevated_users.json", "whitelist")  # List of id's (not usernames) for users which WONT be banned/kicked by the bot.
     DEMONS = get_user_list("elevated_users.json", "demon")
+    DRAGONS = get_user_list("elevated_users.json", "dragon")
+
     WHITELIST_CHATS = []
     BLACKLIST_CHATS = []
     DONATION_LINK = None  # EG, paypal

@@ -2,7 +2,7 @@
 from telegram import Message
 from telegram.ext import MessageFilter
 
-from YorForger import DEV_USERS, SUPPORT_USERS, DEMONS
+from YorForger import DEV_USERS, SUPPORT_USERS, DEMONS, DRAGONS
 
 
 class CustomFilters(object):
@@ -23,6 +23,11 @@ class CustomFilters(object):
             return bool(message.from_user and message.from_user.id in DEMONS)
 
     dem_filter = _Demons()
+    class _Dragons(MessageFilter):
+        def filter(self, message: Message):
+            return bool(message.from_user and message.from_user.id in DRAGONS)
+
+    dem_filter = _Dragons()
 
     class _MimeType(MessageFilter):
         def __init__(self, mimetype):

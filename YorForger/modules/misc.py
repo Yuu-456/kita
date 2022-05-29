@@ -32,6 +32,7 @@ from YorForger import (
     DEV_USERS,
     SUPPORT_USERS,
     DEMONS,
+    DRAGONS,
     WHITELIST_USERS,
     WALL_API,
     spamwtc,
@@ -148,6 +149,9 @@ def info(update, context):
         disaster_level_present = True
     elif user.id in DEMONS:
         text += ("\n\nThis person is my <b>'Agent'</b>.")
+        disaster_level_present = True
+    elif user.id in DRAGONS:
+        text += ("\n\nThis person is my <b>'Dragon'</b>.")
         disaster_level_present = True
     elif user.id in DEV_USERS:
         text += ("\n\nThis person is my <b>'Spy'</b>.")

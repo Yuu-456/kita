@@ -12,6 +12,7 @@ from YorForger import (
     DEV_USERS,
     SUPPORT_USERS,
     DEMONS, 
+    DRAGONS,
     WHITELIST_USERS,
     dispatcher,
 )
@@ -32,6 +33,7 @@ def is_user_ban_protected(chat: Chat, user_id: int, member: ChatMember = None) -
         or user_id in WHITELIST_USERS
         or user_id in SUPPORT_USERS
         or user_id in DEMONS 
+        or user_id in DRAGONS 
         or chat.all_members_are_administrators
         or user_id in {777000, 1087968824}
     ):
@@ -48,6 +50,7 @@ def is_user_warn_protected(chat: Chat, user_id: int, member: ChatMember = None) 
         or user_id in WHITELIST_USERS
         or user_id in SUPPORT_USERS
         or user_id in DEMONS 
+        or user_id in DRAGONS 
         or chat.all_members_are_administrators
         or user_id in {777000, 1087968824}
     ):
@@ -267,7 +270,7 @@ def dem_plus(func):
     def is_dem_plus_func(update, context, *args, **kwargs):
         user = update.effective_user
 
-        if user.id in DEMONS or SUPPORT_USERS or DEV_USERS:
+        if user.id in DEMONS or DRAGONS or SUPPORT_USERS or DEV_USERS:
             return func(update, context, *args, **kwargs)
         if not user:
             pass

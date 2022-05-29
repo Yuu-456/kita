@@ -27,6 +27,7 @@ import YorForger.modules.sql.welcome_sql as sql
 from YorForger import (
     DEV_USERS,
     DEMONS,
+    DRAGONS,
     LOGGER,
     OWNER_ID,
     WHITELIST_USERS,

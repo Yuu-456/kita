@@ -14,6 +14,7 @@ from YorForger import (
     DEV_USERS,
     SUPPORT_USERS,
     DEMONS,
+    DRAGONS,
     WHITELIST_USERS,
     STRICT_GBAN,
     MESSAGE_DUMP,
@@ -90,6 +91,11 @@ def gban(update, context):
         return
 
     if int(user_id) in DEMONS:
+        message.reply_text(
+            "This person is my Agent!!"
+        )
+        return
+    if int(user_id) in DRAGONS:
         message.reply_text(
             "This person is my Agent!!"
         )
@@ -415,7 +421,7 @@ def __user_info__(user_id):
 
     text = "<b>Globally banned</b>: {}"
 
-    if int(user_id) in DEV_USERS + SUPPORT_USERS + WHITELIST_USERS + DEMONS:
+    if int(user_id) in DEV_USERS + SUPPORT_USERS + WHITELIST_USERS + DEMONS + DRAGONS:
         return ""
     if is_gbanned:
         text = text.format("Yes")

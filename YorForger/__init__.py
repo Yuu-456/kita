@@ -76,6 +76,14 @@ if ENV:
         raise Exception(
             "[Kita] Your demon users list does not contain valid integers."
         )
+    try:
+        DRAGONS = {
+            int(x) for x in os.environ.get("DRAGONS", "").split()
+        }
+    except ValueError:
+        raise Exception(
+            "[Kita] Your demon users list does not contain valid integers."
+        )
 
     try:
         WHITELIST_CHATS = {
@@ -238,6 +246,7 @@ DEV_USERS = list(DEV_USERS)
 WHITELIST_USERS = list(WHITELIST_USERS)
 SUPPORT_USERS = list(SUPPORT_USERS)
 DEMONS = list(DEMONS)
+DRAGONS = list(DRAGONS)
 
 # Load at end to ensure all prev variables have been set
 # pylint: disable=C0413
