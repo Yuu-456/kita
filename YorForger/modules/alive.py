@@ -45,7 +45,7 @@ from YorForger import telethn as tbot
 PHOTO = "https://telegra.ph/file/2b04f7812f22b983f8a10.mp4"
 
 @register(pattern=("/alive"))
-async def awake(event):
+async def alive(event):
   TEXT = f"**Hi [{event.sender.first_name}](tg://user?id={event.sender.id}), I'm Shikomori Robot.** \n\n"
   TEXT += "⚪ **I'm Working Properly** \n\n"
   TEXT += f"⚪ **My 'Boyfriend' and original 'Creator' : [Yash](https://github.com/SOME-1HING)**\n\n"
