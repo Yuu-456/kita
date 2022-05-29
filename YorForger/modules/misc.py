@@ -27,6 +27,7 @@ from telegram.ext import CommandHandler, Filters, CallbackContext
 from telegram.utils.helpers import escape_markdown, mention_html
 
 from YorForger import (
+    WOLVES,
     dispatcher,
     OWNER_ID,
     DEV_USERS,
@@ -35,6 +36,7 @@ from YorForger import (
     DRAGONS,
     WHITELIST_USERS,
     WALL_API,
+    TIGERS,
     spamwtc,
 )
 from YorForger.__main__ import STATS, USER_INFO, GDPR
@@ -145,27 +147,18 @@ def info(update, context):
     disaster_level_present = False
 
     if user.id == OWNER_ID:
-        text += ("\n\nThis person is my <b>'Darling' AKA 'Loid-San'</b>.")
-        disaster_level_present = True
-    elif user.id in DEMONS:
-        text += ("\n\nThis person is my <b>'Agent'</b>.")
-        disaster_level_present = True
-    elif user.id in DRAGONS:
-        text += ("\n\nThis person is my <b>'Dragon'</b>.")
+        text += ("\n\nCreator Of 【V๏ɪ፝֟𝔡】 With Disaster Level : <b>'President' 👑</b>.")
         disaster_level_present = True
     elif user.id in DEV_USERS:
-        text += ("\n\nThis person is my <b>'Spy'</b>.")
+        text += ("\n\nThe Disaster Level Of This User : <b>'Vice President'</b>.")
         disaster_level_present = True
-    elif user.id in SUPPORT_USERS:
-        text += (
-            "\n\n This person is my <b>'Family Member'</b>"
-        )
+    elif user.id in DEMONS:
+        text += ("\n\nThe Disaster Level Of This User : <b>'Secretary'</b>.")
         disaster_level_present = True
-    elif user.id in WHITELIST_USERS:
-        text += (
-            "\n\n This user is my <b>'Target'</b>"
-        )
+    elif user.id in DRAGONS:
+        text += ("\n\nThe Disaster Level Of This User : <b>'Advisor'</b>.")
         disaster_level_present = True
+    
 
     if disaster_level_present:
         text += ' [<a href="https://t.me/kitaxupdates/4">?</a>]'
@@ -464,8 +457,20 @@ def rmemes(update, context):
 
 def sudo_ids(update: Update, context: CallbackContext):
     bot = context.bot
-    reply = "<b>My Family Members :</b>\n"
-    for each_user in SUPPORT_USERS:
+    reply = "<b>My Advisors :</b>\n"
+    for each_user in DRAGONS:
+        user_id = int(each_user)
+        try:
+            user = bot.get_chat(user_id)
+            reply += f"• {mention_html(user_id, html.escape(user.first_name))}\n"
+        except TelegramError:
+            pass
+    update.effective_message.reply_text(reply, parse_mode=ParseMode.HTML)
+
+def demon_ids(update: Update, context: CallbackContext):
+    bot = context.bot
+    reply = "<b>My Secretaries :</b>\n"
+    for each_user in DEMONS:
         user_id = int(each_user)
         try:
             user = bot.get_chat(user_id)
@@ -581,13 +586,13 @@ GETLINK_HANDLER = CommandHandler(
     "getlink", getlink, pass_args=True, filters=Filters.user(DEV_USERS), run_async=True
 )
 DEVLIST_HANDLER = CommandHandler(
-    "villains", dev_ids, filters=Filters.user(DEV_USERS), run_async=True
+    "devlist", dev_ids, filters=Filters.user(DEV_USERS), run_async=True
 )
 SUDOLIST_HANDLER = CommandHandler(
-    "dragons", sudo_ids, filters=Filters.user(DEV_USERS), run_async=True
+    "sudos", "advisors", "sudolist", "dragons", sudo_ids, filters=Filters.user(DRAGONS), run_async=True
 )
-SUPPLIST_HANDLER = CommandHandler(
-    "assassins", support_ids, filters=Filters.user(DEV_USERS), run_async=True
+DEMONLIST_HANDLER = CommandHandler(
+    "demons", "secretary", "demonlist", demon_ids, filters=Filters.user(DEMONS), run_async=True
 )
 REDDIT_MEMES_HANDLER = DisableAbleCommandHandler("rmeme", rmemes, run_async=True)
 SRC_HANDLER = CommandHandler(
@@ -607,7 +612,7 @@ dispatcher.add_handler(WIKI_HANDLER)
 dispatcher.add_handler(GETLINK_HANDLER)
 dispatcher.add_handler(DEVLIST_HANDLER)
 dispatcher.add_handler(SUDOLIST_HANDLER)
-dispatcher.add_handler(SUPPLIST_HANDLER)
 dispatcher.add_handler(REDDIT_MEMES_HANDLER)
 dispatcher.add_handler(SRC_HANDLER)
 dispatcher.add_handler(PASTE_HANDLER)
+dispatcher.add_handler(DEMONLIST_HANDLER)

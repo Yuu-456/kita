@@ -77,6 +77,22 @@ if ENV:
             "[Kita] Your demon users list does not contain valid integers."
         )
     try:
+        TIGERS = {
+            int(x) for x in os.environ.get("TIGERS", "").split()
+        }
+    except ValueError:
+        raise Exception(
+            "[Kita] Your demon users list does not contain valid integers."
+        )
+    try:
+        WOLVES = {
+            int(x) for x in os.environ.get("WOLVES", "").split()
+        }
+    except ValueError:
+        raise Exception(
+            "[Kita] Your demon users list does not contain valid integers."
+        )
+    try:
         DRAGONS = {
             int(x) for x in os.environ.get("DRAGONS", "").split()
         }
@@ -131,7 +147,7 @@ if ENV:
     SPAMMERS = os.environ.get("SPAMMERS", None)
 
 else:
-    from Yor.config import Development as Config
+    from YorForger.config import Development as Config
 
     TOKEN = Config.TOKEN
     try:
@@ -247,6 +263,8 @@ WHITELIST_USERS = list(WHITELIST_USERS)
 SUPPORT_USERS = list(SUPPORT_USERS)
 DEMONS = list(DEMONS)
 DRAGONS = list(DRAGONS)
+TIGERS = list(TIGERS)
+WOLVES = list(WOLVES)
 
 # Load at end to ensure all prev variables have been set
 # pylint: disable=C0413

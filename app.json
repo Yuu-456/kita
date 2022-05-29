@@ -89,6 +89,21 @@
       "required": false,
       "value": ""
     },
+    "DRAGONS": {
+      "description": "DRAGONS/SUDOS",
+      "required": false,
+      "value": ""
+    },
+    "WOLVES": {
+      "description": "WOLVES",
+      "required": false,
+      "value": ""
+    },
+    "TIGERS": {
+      "description": "TIGERS",
+      "required": false,
+      "value": ""
+    },
     "MONGO_DB_URI": {
       "description": "MONGO DB URI from mongo",
       "required": true,
