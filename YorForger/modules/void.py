@@ -1,6 +1,7 @@
 from pyrogram import filters
 from YorForger import pbot
 from pyrogram.types import (ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton)
+from telegram import ParseMode
 
 PHOTO = "https://telegra.ph/file/f9b0895ae78578fda9202.jpg"
 
@@ -16,7 +17,8 @@ async def void(message):
             ]
     ]   
 
-    await message.reply_photo(photo=PHOTO, caption=caption, reply_markup=InlineKeyboardMarkup(buttons))
+    await message.effective_message.send_file(photo=PHOTO, caption=caption, reply_markup=InlineKeyboardMarkup(buttons),
+    parse_mode=ParseMode.MARKDOWN,)
 
 
 __help__ = """
