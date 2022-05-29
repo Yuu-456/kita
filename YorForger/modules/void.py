@@ -35,9 +35,9 @@ __mod_name__ = "【ᴠᴏɪᴅ】"
 
 def void(update: Update, context: CallbackContext):
 
-    TEXT = "Welcome to [【V๏ɪ፝֟𝔡】Network](https://t.me/voidxnetwork) \n\n◈ Void is an anime based Community with a motive to spread love and peace around telegram. Go through the channel and join the Community if it draws your attention. ◈"
+    TEXT = f"Welcome to [【V๏ɪ፝֟𝔡】Network](https://t.me/voidxnetwork) \n\n◈ Void is an anime based Community with a motive to spread love and peace around telegram. Go through the channel and join the Community if it draws your attention. ◈"
 
-    update.effective_message.reply_photo(
+    update.reply_photo(
         PHOTO, caption= TEXT,
         parse_mode=ParseMode.HTML,
 
