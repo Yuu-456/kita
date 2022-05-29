@@ -1,7 +1,7 @@
 from pyrogram import filters
 from YorForger import pbot
 
-PHOTO = "https://telegra.ph/file/f9b0895ae78578fda9202.jpg"
+PHOTO = "https://telegra.ph/file/fa2c031ecf5df678280e5.jpg"
 
 @pbot.on_message(filters.command(['alive']))
 async def void(_, message):
