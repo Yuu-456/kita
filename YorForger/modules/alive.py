@@ -34,7 +34,7 @@ from telethon import Button
 PHOTO = "https://telegra.ph/file/f9b0895ae78578fda9202.jpg"
 
 @pbot.on_message(filters.command(['void']))
-async def void(event):
+async def awake(event):
     caption = f"**I Am Kita Shinsuke!**\n\n**I Work Under - [Void X Network](t.me/voidxnetwork)** \n\n◈ I will love to be in your groupchat ◈"
 
     # BUTTON = [

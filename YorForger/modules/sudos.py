@@ -4,7 +4,7 @@ import json
 import os
 from typing import Optional
 
-from YorForger import (DEV_USERS, OWNER_ID, SUPPORT_USERS, WHITELIST_USERS, dispatcher)
+from YorForger import (DEV_USERS, DRAGONS, OWNER_ID, DRAGONS, DEMONS, dispatcher)
 from YorForger.modules.helper_funcs.chat_status import (dev_plus, sudo_plus,
                                                            ass_plus)
 from YorForger.modules.helper_funcs.extraction import extract_user
@@ -64,17 +64,17 @@ def addpiro(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
         
     if int(user_id) in DEV_USERS:
-      message.reply_text("This member is already my Spy")
+      message.reply_text("This member is already my Vice President")
         
-    if user_id in SUPPORT_USERS:
-        rt += "Requested to Darling to promote a Family Member to Spy."
+    if user_id in DRAGONS:
+        rt += "Requested to President to promote a Advisor to Vice President."
         data['sudos'].remove(user_id)
-        SUPPORT_USERS.remove(user_id)
-
-    if user_id in WHITELIST_USERS:
-        rt += "Requested to Darling to promote my Target to Spy."
-        data['whitelist'].remove(user_id)
-        WHITELIST_USERS.remove(user_id)
+        DRAGONS.remove(user_id)
+    
+    if user_id in DEMONS:
+        rt += "Requested to President to promote a Secretary to Vice President."
+        data['demons'].remove(user_id)
+        DRAGONS.remove(user_id)
 
     data['devs'].append(user_id)
     DEV_USERS.append(user_id)
@@ -83,7 +83,7 @@ def addpiro(update: Update, context: CallbackContext) -> str:
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + "\nSuccessfull {} He is my Spy!".format(
+        rt + "\nSuccessfull {} He is my Vice President!".format(
             user_member.first_name))
 
     log_message = (
@@ -118,24 +118,24 @@ def addsudo(update: Update, context: CallbackContext) -> str:
     with open(ELEVATED_USERS_FILE, 'r') as infile:
         data = json.load(infile)
 
-    if user_id in SUPPORT_USERS:
-        message.reply_text("This member is already my Family Member")
+    if user_id in DRAGONS:
+        message.reply_text("This member is already my Advisor")
         return ""
 
-    if user_id in WHITELIST_USERS:
-        rt += "Requested to Darling to promote my Target to Family Member."
-        data['whitelist'].remove(user_id)
-        WHITELIST_USERS.remove(user_id)
+    if user_id in DEMONS:
+        rt += "Requested to President to promote my Secretary to Advisor."
+        data['demons'].remove(user_id)
+        DEMONS.remove(user_id)
 
 
     data['sudos'].append(user_id)
-    SUPPORT_USERS.append(user_id)
+    DRAGONS.append(user_id)
 
     with open(ELEVATED_USERS_FILE, 'w') as outfile:
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + "\nSuccessfull {} is my Family Member!".format(
+        rt + "\nSuccessfull {} is my Advisor!".format(
             user_member.first_name))
 
     log_message = (
@@ -173,27 +173,27 @@ def addsupport(
     with open(ELEVATED_USERS_FILE, 'r') as infile:
         data = json.load(infile)
 
-    if user_id in SUPPORT_USERS:
-        rt += "Requested Darling to demote him to Family Member to Target"
+    if user_id in DRAGONS:
+        rt += "Requested President to demote him to Advisor to Secretary"
         data['sudos'].remove(user_id)
-        SUPPORT_USERS.remove(user_id)
+        DRAGONS.remove(user_id)
 
-    if user_id in WHITELIST_USERS:
-        message.reply_text("This user is already a Target.")
+    if user_id in DEMONS:
+        message.reply_text("This user is already a Secretary.")
         return ""
 
 
-    data['whitelist'].append(user_id)
-    WHITELIST_USERS.append(user_id)
+    data['demons'].append(user_id)
+    DEMONS.append(user_id)
 
     with open(ELEVATED_USERS_FILE, 'w') as outfile:
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + f"\n{user_member.first_name} was added as my Target!")
+        rt + f"\n{user_member.first_name} was added as my Secretary!")
 
     log_message = (
-        f"#WHITELIST\n"
+        f"#DEMONS\n"
         f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
         f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
     )
@@ -226,7 +226,7 @@ def rmpiro(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in DEV_USERS:
-        message.reply_text("Requested Darling to demote this user to Normal User")
+        message.reply_text("Requested President to demote this user to Normal User")
         DEV_USERS.remove(user_id)
         data['devs'].remove(user_id)
 
@@ -246,7 +246,7 @@ def rmpiro(update: Update, context: CallbackContext) -> str:
         return log_message
 
     else:
-        message.reply_text("This user is not my Target!")
+        message.reply_text("This user is not my Secretary!")
         return ""
       
       
@@ -269,9 +269,9 @@ def removesudo(update: Update, context: CallbackContext) -> str:
     with open(ELEVATED_USERS_FILE, 'r') as infile:
         data = json.load(infile)
 
-    if user_id in SUPPORT_USERS:
-        message.reply_text("Requested Darling to demote this user to Normal User")
-        SUPPORT_USERS.remove(user_id)
+    if user_id in DRAGONS:
+        message.reply_text("Requested President to demote this user to Normal User")
+        DRAGONS.remove(user_id)
         data['sudos'].remove(user_id)
 
         with open(ELEVATED_USERS_FILE, 'w') as outfile:
@@ -290,7 +290,7 @@ def removesudo(update: Update, context: CallbackContext) -> str:
         return log_message
 
     else:
-        message.reply_text("This user is not my Family Member!")
+        message.reply_text("This user is not my Advisor!")
         return ""
 
 
@@ -313,16 +313,16 @@ def removesupport(update: Update, context: CallbackContext) -> str:
     with open(ELEVATED_USERS_FILE, 'r') as infile:
         data = json.load(infile)
 
-    if user_id in WHITELIST_USERS:
-        message.reply_text("Requested Darling to demote this user to Normal user")
-        WHITELIST_USERS.remove(user_id)
-        data['whitelist'].remove(user_id)
+    if user_id in DEMONS:
+        message.reply_text("Requested President to demote this user to Normal user")
+        DEMONS.remove(user_id)
+        data['demons'].remove(user_id)
 
         with open(ELEVATED_USERS_FILE, 'w') as outfile:
             json.dump(data, outfile, indent=4)
 
         log_message = (
-            f"#UNWHITELIST\n"
+            f"#UBDEMON\n"
             f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
             f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
         )
@@ -333,28 +333,28 @@ def removesupport(update: Update, context: CallbackContext) -> str:
         return log_message
 
     else:
-        message.reply_text("This user is not my Target!")
+        message.reply_text("This user is not my Secretary!")
         return ""
 
 
 
 
-DEV_HANDLER = CommandHandler(("addspy", "adddev"), addpiro, run_async = True)
-SUDO_HANDLER = CommandHandler(("addagent", "adddrag"), addsudo, run_async = True)
-SUPPORT_HANDLER = CommandHandler(("addfamilymember", "addsupport"), addsupport, run_async = True)
+DEV_HANDLER = CommandHandler("adddev", addpiro, run_async = True)
+SUDO_HANDLER = CommandHandler("addsudo", addsudo, run_async = True)
+DEMON_HANDLER = CommandHandler("adddemon", addsupport, run_async = True)
 
-RMPIRO_HANDLER = CommandHandler(("rmspy", "rmdev"), rmpiro, run_async = True)
-UNSUDO_HANDLER = CommandHandler(("rmagent", "rmsudo"), removesudo, run_async = True)
-UNSUPPORT_HANDLER = CommandHandler(("rmfamilymember", "removesupp"),
+RMPIRO_HANDLER = CommandHandler("rmdev", rmpiro, run_async = True)
+UNSUDO_HANDLER = CommandHandler("rmsudo", removesudo, run_async = True)
+UNDEMON_HANDLER = CommandHandler("rmdemon",
                                    removesupport, run_async = True)
 
 dispatcher.add_handler(DEV_HANDLER)
 dispatcher.add_handler(SUDO_HANDLER)
-dispatcher.add_handler(SUPPORT_HANDLER)
 dispatcher.add_handler(UNSUDO_HANDLER)
-dispatcher.add_handler(UNSUPPORT_HANDLER)
 dispatcher.add_handler(RMPIRO_HANDLER)
+dispatcher.add_handler(UNDEMON_HANDLER)
+dispatcher.add_handler(DEMON_HANDLER)
 
 __mod_name__ = "Disasters"
 __handlers__ = [
-    DEV_HANDLER, SUDO_HANDLER, SUPPORT_HANDLER, UNSUDO_HANDLER, UNSUPPORT_HANDLER, RMPIRO_HANDLER]
+    DEV_HANDLER, SUDO_HANDLER, DEMON_HANDLER, UNSUDO_HANDLER, UNDEMON_HANDLER, RMPIRO_HANDLER]
