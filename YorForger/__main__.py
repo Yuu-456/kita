@@ -90,15 +90,15 @@ START_MSG = "I'm Working Out!\n<b>Haven't stopped since:</b> <code>{}</code>"
 START_IMG = "https://telegra.ph/file/af0931a6fa8ec665caa65.jpg"
     
 PM_START_TEXT = """
-────「 [{}](https://telegra.ph/file/6ac7223d0a27ffcd3831b.jpg) 」────
-Konichiwa `{}`, here to help,
-*I am an Anime based group management bot with a lot of awesome Features*
+────「 [{}](https://telegra.ph/file/871f52a6198ade88a7f3b.mp4) 」────
+Konichiwa `{}`.
+*An Anime Based Bot Working Under [【V๏ɪ፝֟𝔡】](t.me/voidxnetwork)*
 ┏━━━━━━━━━━━━━━━━━━━━
 × *Working since:* `{}`
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
-× `{}` *Teammates, across* `{}` *Chatgroups.*
+× `{}` *Teammates, Across* `{}` *Chatgroups.*
 ┗━━━━━━━━━━━━━━━━━━━━
-*Try The Help Buttons Below To Know My Abilities And Charm*
+*Try The /help Button Below To Know My Abilities!*
 """
 
 GROUP_START_TEXT = """
@@ -128,7 +128,7 @@ buttons = [
 
                     
 HELP_STRINGS = """
-*Main* commands available:
+*Main* commands available [💫](https://telegra.ph/file/bee6f9297ff8d3e2ec1c7.jpg) :
  ➛ /help: PM's you this message.
  ➛ /help <module name>: PM's you info about that module.
  ➛ /settings:
@@ -256,7 +256,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
                 update.effective_message.reply_photo(
-            START_IMG, caption="<b>Ara Ara, I'm Kita shinsuke!\nI'm Working Properly.</b>\nI am alive since: <code>{}</code>".format(
+            START_IMG, caption="<b>Kita Working Since: <code>{}</code>".format(
                 uptime,
             ),
             parse_mode=ParseMode.HTML,
@@ -264,15 +264,7 @@ def start(update: Update, context: CallbackContext):
              reply_markup=InlineKeyboardMarkup(
                 [
                   [
-                  InlineKeyboardButton(text="Developer", url="https://t.me/voidaryan")
-                  ],
-                  [
-                  InlineKeyboardButton(text="Kita's Darling", url="https://t.me/Achillues")
-                  ],
-                  [
                   InlineKeyboardButton(text="Sᴜᴘᴘᴏʀᴛ❤", url="https://t.me/kitaxsupport")
-                  ],
-                  [
                   InlineKeyboardButton(text="🔰Uᴘᴅᴀᴛᴇs🔰", url="https://t.me/kitaxupdates")
                   ]
                 ]
@@ -537,7 +529,7 @@ def settings_button(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="Back",
+                                text="---| Back |---",
                                 callback_data="stngs_back({})".format(chat_id),
                             )
                         ]
