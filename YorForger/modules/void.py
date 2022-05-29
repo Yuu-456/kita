@@ -11,7 +11,6 @@ from YorForger import telethn as tbot
 
 PHOTO = "https://telegra.ph/file/f9b0895ae78578fda9202.jpg"
 
-
 @register(pattern=("/void"))
 async def awake(event):
     TEXT = f"**Welcome to [【V๏ɪ፝֟𝔡】Network](https://t.me/voidxnetwork)** \n\n"
@@ -21,8 +20,8 @@ async def awake(event):
             Button.url("【Usertag】", "https://t.me/VoidxNetwork/3"),
             Button.url("【Owner Sama】", "https://t.me/voidaryan"),
         ]
-    ]
-    await tbot.send_file(event.chat_id, PHOTO, caption=TEXT, buttons=BUTTON)
+    ]   
+    await tbot.send_file(event.chat_id, PHOTO, caption=TEXT,  buttons=BUTTON)
 
 __help__ = """
  ──「Void Network」──                         
