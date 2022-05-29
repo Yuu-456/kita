@@ -1,6 +1,6 @@
 from pyrogram import filters
 from YorForger import pbot
-from pyrogram import InlineKeyboardButton, InlineKeyboardMarkup
+from telethon import InlineKeyboardButton, InlineKeyboardMarkup
 
 PHOTO = "https://telegra.ph/file/f9b0895ae78578fda9202.jpg"
 
