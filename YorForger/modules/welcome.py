@@ -151,7 +151,7 @@ def send(update, message, keyboard, backup_message):
                 markdown_parser(
                     (
                         backup_message
-                        + "\nNote: An error occured when sending the custom message. Please update."
+                        + "\nNote: An error occurred when sending the custom message. Please update."
                     )
                 ),
                 parse_mode=ParseMode.MARKDOWN,
@@ -204,7 +204,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
             # Give the owner a special welcome
             if new_mem.id == OWNER_ID:
                 update.effective_message.reply_photo("https://telegra.ph/file/bc082487f0b8a3cace602.jpg",
-                    "Every One Behave Our **President*** Is Here",
+                    "Every One Behave Our <br>President</br> Is Here",
                     reply_to_message_id=reply,
                 )
                 welcome_log = (
@@ -218,30 +218,30 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
             if new_mem.id in DEV_USERS:
                 if new_mem.id == 949365920:
                     update.effective_message.reply_photo("https://telegra.ph/file/ff7ef0199a298b5518fc5.jpg",
-                        "Every One Behave My **Head Developer***Is Here",
+                        "Every One Behave My <br>Head Developer</br>Is Here",
                         reply_to_message_id=reply,
                     )
                     welcome_log = (
                         f"{html.escape(chat.title)}\n"
                         f"#USER_JOINED\n"
-                        f"Bot Owner just joined the chat"
+                        f"Head Dev 'SOME1HING' just joined the chat"
                     )
                     continue
                 else:
                     update.effective_message.reply_text(
-                    "Be Cool! My **Vice President** just joined the group!",
+                    "Be Cool! My <br>Vice President</br> just joined the group!",
                     reply_to_message_id=reply,
                     )
                     continue
             if new_mem.id == DRAGONS:
                 update.effective_message.reply_text(
-                    "My **ADVISOR** just joined the group!",
+                    "My <br>ADVISOR</br> just joined the group!",
                     reply_to_message_id=reply,
                     )
                 continue
             if new_mem.id == DEMONS:
                 update.effective_message.reply_text(
-                    "My **Secretary** just joined the group!",
+                    "My <br>Secretary</br> just joined the group!",
                     reply_to_message_id=reply,
                     )
                 continue
