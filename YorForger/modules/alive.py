@@ -9,7 +9,7 @@ from YorForger.events import register
 from YorForger import telethn as tbot
 
 
-PHOTO = "https://telegra.ph/file/dbf5b416000d948b0fdca.jpg"
+PHOTO = "https://telegra.ph/file/fa2c031ecf5df678280e5.jpg"
 
 
 @register(pattern=("/alive"))
