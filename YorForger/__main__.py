@@ -707,7 +707,7 @@ def main():
 
     else:
         LOGGER.info(f"Kita deployed. | BOT: [@KitaxRobot]")
-        updater.start_polling(timeout=15, read_latency=4, clean=True)
+        updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True)
 
     if len(argv) not in (1, 3, 4):
         telethn.disconnect()
