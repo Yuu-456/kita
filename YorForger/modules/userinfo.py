@@ -39,18 +39,18 @@ from horisan import (
     StartTime,
     SUPPORT_CHAT,
 )
-from horisan.__main__ import STATS, TOKEN, USER_INFO
-from horisan.modules.sql import SESSION
-import horisan.modules.sql.userinfo_sql as sql
-from horisan.modules.disable import DisableAbleCommandHandler
-from horisan.modules.sql.global_bans_sql import is_user_gbanned
-from horisan.modules.sql.afk_sql import is_afk, set_afk
-from horisan.modules.sql.users_sql import get_user_num_chats
-from horisan.modules.helper_funcs.chat_status import sudo_plus
-from horisan.modules.helper_funcs.extraction import extract_user
-from horisan import telethn
+from YorForger.__main__ import STATS, TOKEN, USER_INFO
+from YorForger.modules.sql import SESSION
+import YorForger.modules.sql.userinfo_sql as sql
+from YorForger.modules.disable import DisableAbleCommandHandler
+from YorForger.modules.sql.global_bans_sql import is_user_gbanned
+from YorForger.modules.sql.afk_sql import is_afk, set_afk
+from YorForger.modules.sql.users_sql import get_user_num_chats
+from YorForger.modules.helper_funcs.chat_status import sudo_plus
+from YorForger.modules.helper_funcs.extraction import extract_user
+from YorForger import telethn
 
-HORI_IMG = "https://telegra.ph/file/d0a6b5065c3ac804b49f3.jpg"
+HORI_IMG = "https://telegra.ph/file/fa2c031ecf5df678280e5.jpg"
 
 def no_by_per(totalhp, percentage):
     """
@@ -143,7 +143,7 @@ def hpmanager(user):
 
 def make_bar(per):
     done = min(round(per / 10), 10)
-    return "🔹" * done + "🔸" * (10 - done)
+    return "➕" * done + "➖" * (10 - done)
 
 
 def get_id(update: Update, context: CallbackContext):
@@ -309,7 +309,7 @@ def info(update: Update, context: CallbackContext):
         if spamwtc:
             text += "\n\n<b>This person is Spamwatched!</b>"
             text += f"\nReason: <pre>{spamwtc.reason}</pre>"
-            text += "\nAppeal at @HorixSupport"
+            text += "\nAppeal at @kitaxsupport"
     except:
         pass  # don't crash if api is down somehow...
 
@@ -362,10 +362,10 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "【Health】", url="https://t.me/hori_x_updates/7"
+                                "【Health】", url="https://t.me/kitaxupdates/13"
                             ),
                             InlineKeyboardButton(
-                                "【Disaster】", url="https://t.me/hori_x_updates/6"
+                                "【Disaster】", url="https://t.me/kitaxupdates/10"
                             ),
                         ],
                     ]
@@ -381,10 +381,10 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "【Health】", url="https://t.me/hori_x_updates/7"
+                                "【Health】", url="https://t.me/kitaxupdates/13"
                             ),
                             InlineKeyboardButton(
-                                "【Disaster】", url="https://t.me/hori_x_updates/6"
+                                "【Disaster】", url="https://t.me/kitaxupdates/10"
                             ),
                         ],
                     ]
@@ -459,7 +459,7 @@ def set_about_me(update: Update, context: CallbackContext):
 
 @sudo_plus
 def stats(update: Update, context: CallbackContext):
-    stats = "<b>--【Hori San's Statistics】--</b>\n\n" + "\n".join(
+    stats = "<b>--【Kita Shinsuke Statistics】--</b>\n\n" + "\n".join(
         [mod.__stats__() for mod in STATS]
     )
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
