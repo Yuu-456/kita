@@ -43,7 +43,7 @@ async def void(event):
     #         Button.url("【Updates】", "https://t.me/kitaxupdates"),
     #     ]
     # ]
-    await pbot.send_file(event.chat_id, PHOTO, caption=caption,
+    await pbot.reply_photo(event.chat_id, PHOTO, caption=caption,
     # buttons=BUTTON
     )
 

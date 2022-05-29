@@ -1,6 +1,6 @@
 from pyrogram import filters
 from YorForger import pbot
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import (ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton)
 
 PHOTO = "https://telegra.ph/file/f9b0895ae78578fda9202.jpg"
 
@@ -10,13 +10,13 @@ async def void(_, message):
     buttons = [
         [
             InlineKeyboardButton(
-                text=" 【Usertag】", url="https://t.me/VoidxNetwork/3"),
+                " 【Usertag】", url="https://t.me/VoidxNetwork/3"),
             InlineKeyboardButton(
-                text="【Owner Sama】", url="https://t.me/voidaryan")
+                "【Owner Sama】", url="https://t.me/voidaryan")
             ]
     ]   
 
-    await message.send_file(photo=PHOTO, caption=caption, reply_markup=InlineKeyboardMarkup(buttons))
+    await message.reply_photo(photo=PHOTO, caption=caption, reply_markup=InlineKeyboardMarkup(buttons))
 
 
 __help__ = """
