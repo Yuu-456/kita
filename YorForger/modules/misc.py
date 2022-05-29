@@ -583,16 +583,16 @@ GDCR_HANDLER = CommandHandler(
 WIKI_HANDLER = DisableAbleCommandHandler("wiki", wiki, run_async=True)
 UD_HANDLER = DisableAbleCommandHandler("ud", ud, run_async=True)
 GETLINK_HANDLER = CommandHandler(
-    "getlink", getlink, pass_args=True, filters=Filters.user(DEV_USERS), run_async=True
+    "getlink", getlink, pass_args=True,  run_async=True
 )
 DEVLIST_HANDLER = CommandHandler(
-    "devlist", dev_ids, filters=Filters.user(DEV_USERS), run_async=True
+    "devlist", dev_ids,  run_async=True
 )
 SUDOLIST_HANDLER = CommandHandler(
-    "advisors", sudo_ids, filters=Filters.user(DRAGONS), run_async=True
+    "advisors", sudo_ids, run_async=True
 )
 DEMONLIST_HANDLER = CommandHandler(
-    "secretary", demon_ids, filters=Filters.user(DEMONS), run_async=True
+    "secretary", demon_ids, run_async=True
 )
 REDDIT_MEMES_HANDLER = DisableAbleCommandHandler("rmeme", rmemes, run_async=True)
 SRC_HANDLER = CommandHandler(
