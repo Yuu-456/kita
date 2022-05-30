@@ -390,35 +390,35 @@ def help_button(update, context):
     except BadRequest:
         pass
 
-def asuna_callback_data(update, context):
-    query = update.callback_query
-    uptime = get_readable_time((time.time() - StartTime))
-    if query.data == "help_back":
-        query.message.edit_text(
-            text="""CallBackQueriesData Here""",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="[Back]", callback_data="help_back")
-                 ]
-                ]
-            ),
-        )
-    elif query.data == "Yor_back":
-        first_name = update.effective_user.first_name
-        query.message.edit_text(
-                PM_START_TEXT.format(
-                    escape_markdown(context.bot.first_name),
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-        )
+# def asuna_callback_data(update, context):
+#     query = update.callback_query
+#     uptime = get_readable_time((time.time() - StartTime))
+#     if query.data == "help_back":
+#         query.message.edit_text(
+#             text="""CallBackQueriesData Here""",
+#             parse_mode=ParseMode.MARKDOWN,
+#             disable_web_page_preview=True,
+#             reply_markup=InlineKeyboardMarkup(
+#                 [
+#                  [
+#                     InlineKeyboardButton(text="[Back]", callback_data="help_back")
+#                  ]
+#                 ]
+#             ),
+#         )
+    # elif query.data == "Yor_back":
+    #     first_name = update.effective_user.first_name
+    #     query.message.edit_text(
+    #             PM_START_TEXT.format(
+    #                 escape_markdown(context.bot.first_name),
+    #                 escape_markdown(first_name),
+    #                 escape_markdown(uptime),
+    #                 sql.num_users(),
+    #                 sql.num_chats()),
+    #             reply_markup=InlineKeyboardMarkup(buttons),
+    #             parse_mode=ParseMode.MARKDOWN,
+    #             timeout=60,
+    #     )
 
 
 @typing_action
@@ -444,7 +444,7 @@ def get_help(update, context):
         )
         return
 
-    if len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
+    elif len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
         module = args[1].lower()
         text = (
             " 〔 *{}* 〕\n".format(
