@@ -93,7 +93,8 @@ def paginate_modules(page_n, module_dict, prefix, chat=None):
                     "❮",
                     callback_data="{}_prev({})".format(prefix, modulo_page),
                 ),
-                EqInlineKeyboardButton("Go Home", callback_data="Shikimori_back"),
+                InlineKeyboardButton(
+                            text="[❌]", callback_data="delete_"),
                 EqInlineKeyboardButton(
                     "❯",
                     callback_data="{}_next({})".format(prefix, modulo_page),
