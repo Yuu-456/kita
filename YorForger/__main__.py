@@ -88,12 +88,11 @@ HELP_IMG = "https://telegra.ph/file/bee6f9297ff8d3e2ec1c7.jpg"
 HELP_MSG = "Click the button below to get help menu in your pm."
 START_MSG = "I'm Working Out!\n<b>Haven't stopped since:</b> <code>{}</code>"
 START_IMG = "https://telegra.ph/file/af0931a6fa8ec665caa65.jpg"
-VOID = "【V๏ɪ፝֟𝔡】"
     
 PM_START_TEXT = """
 ────「 [{}](https://telegra.ph/file/871f52a6198ade88a7f3b.mp4) 」────
 Konichiwa `{}`.
-*An Anime Based Bot Working Under [{}](t.me/voidxnetwork)*
+*An Anime Based Bot Working Under [【V๏ɪ፝֟𝔡】](https://t.me/voidxnetwork)*
 ┏━━━━━━━━━━━━━━━━━━━━
 × *Working since:* `{}`
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
@@ -214,7 +213,6 @@ def test(update: Update, context: CallbackContext):
 def start(update: Update, context: CallbackContext):
     args = context.args
     uptime = get_readable_time((time.time() - StartTime))
-    void = VOID
     if update.effective_chat.type == "private":
         if len(args) >= 1:
             if args[0].lower() == "help":
@@ -249,7 +247,7 @@ def start(update: Update, context: CallbackContext):
                 PM_START_TEXT.format(
                     escape_markdown(context.bot.first_name),
                     escape_markdown(first_name),
-                    escape_markdown(void),
+                    escape_markdown(uptime),
                     sql.num_users(),
                     sql.num_chats()),                        
                 reply_markup=InlineKeyboardMarkup(buttons),
@@ -394,7 +392,6 @@ def help_button(update, context):
 
 def asuna_callback_data(update, context):
     query = update.callback_query
-    void = VOID
     uptime = get_readable_time((time.time() - StartTime))
     if query.data == "Kita_":
         query.message.edit_text(
