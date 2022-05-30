@@ -419,7 +419,7 @@ def help_button(update, context):
     #             parse_mode=ParseMode.MARKDOWN,
     #             timeout=60,
     #     )
-def Shikimori_about_callback(update, context):
+def kita_about_callback(update, context):
     query = update.callback_query
     if query.data == "Shikimori_":
         query.message.edit_text(
@@ -730,14 +730,14 @@ def main():
     settings_handler = DisableAbleCommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
-    #data_callback_handler = CallbackQueryHandler(asuna_callback_data, pattern=r"asuna_")
+    data_callback_handler = CallbackQueryHandler(kita_about_callback, pattern=r"asuna_")
     donate_handler = DisableAbleCommandHandler("donate", donate)
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
 
-    # dispatcher.add_handler(test_handler)
+    dispatcher.add_handler(test_handler)
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(help_handler)
-    #dispatcher.add_handler(data_callback_handler)
+    dispatcher.add_handler(data_callback_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)
     dispatcher.add_handler(settings_callback_handler)
