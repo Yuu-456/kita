@@ -350,7 +350,7 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="Go Home", callback_data="help_back")]]
+                    [[InlineKeyboardButton(text="[❌]", callback_data="deletehelp_")]]
                 ),
             )
 
@@ -389,6 +389,14 @@ def help_button(update, context):
 
     except BadRequest:
         pass
+
+
+def deletehelp_btn(update, context):
+    query = update.callback_query
+    if query.data == "deletehelp":
+        query.message.delete()
+    elif query.data == "deletehelp_":
+         query.message.delete()
 
 def asuna_callback_data(update, context):
     query = update.callback_query
@@ -675,6 +683,8 @@ def main():
 
     help_handler = DisableAbleCommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_.*")
+    DELETEHELP_HANDLER = CallbackQueryHandler(
+        deletehelp_btn, pattern=r"deletehelp_", run_async=True)
 
     settings_handler = DisableAbleCommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
@@ -692,6 +702,7 @@ def main():
     dispatcher.add_handler(settings_callback_handler)
     dispatcher.add_handler(migrate_handler)
     dispatcher.add_handler(donate_handler)
+    dispatcher.add_handler(DELETEHELP_HANDLER)    
 
     dispatcher.add_error_handler(error_callback)
 
