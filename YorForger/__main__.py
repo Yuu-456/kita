@@ -250,7 +250,6 @@ def start(update: Update, context: CallbackContext):
                     escape_markdown(context.bot.first_name),
                     escape_markdown(first_name),
                     escape_markdown(void),
-                    escape_markdown(uptime),
                     sql.num_users(),
                     sql.num_chats()),                        
                 reply_markup=InlineKeyboardMarkup(buttons),
@@ -416,7 +415,6 @@ def asuna_callback_data(update, context):
                 PM_START_TEXT.format(
                     escape_markdown(context.bot.first_name),
                     escape_markdown(first_name),
-                    escape_markdown(void),
                     escape_markdown(uptime),
                     sql.num_users(),
                     sql.num_chats()),
