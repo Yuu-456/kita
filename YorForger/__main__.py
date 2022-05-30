@@ -92,7 +92,7 @@ START_IMG = "https://telegra.ph/file/af0931a6fa8ec665caa65.jpg"
 PM_START_TEXT = """
 ────「 [{}](https://telegra.ph/file/871f52a6198ade88a7f3b.mp4) 」────
 Konichiwa `{}`.
-*An Anime Based Bot Working Under* [【V๏ɪ፝֟𝔡】](https://t.me/voidxnetwork)
+*An Anime Based Bot Working Under* [【V๏ɪ፝֟𝔡】 ✧Network✧](https://t.me/voidxnetwork)
 ┏━━━━━━━━━━━━━━━━━━━━
 × *Working since:* `{}`
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
