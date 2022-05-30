@@ -96,7 +96,7 @@ def paginate_modules(page_n, module_dict, prefix, chat=None):
                 ),
                 EqInlineKeyboardButton(
                     "Back",
-                    callback_data="Yor_back",
+                    callback_data="Kita_back",
                 ),
                 EqInlineKeyboardButton(
                     "❯",

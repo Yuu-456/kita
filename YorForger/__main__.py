@@ -96,7 +96,7 @@ Konichiwa `{}`.
 ┏━━━━━━━━━━━━━━━━━━━━
 × *Working since:* `{}`
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
-× `{}` *Teammates, Across* `{}` *Chatgroups.*
+× `{}` *Teammates, Across* `{}` *Chat groups.*
 ┗━━━━━━━━━━━━━━━━━━━━
 *Try The /help Button Below To Know My Abilities!*
 """
@@ -120,7 +120,7 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-            text="--Help--", callback_data="help_back"
+            text="--Help--", callback_data="Kita_back"
         ),
     ],
    
@@ -225,7 +225,7 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                        [[InlineKeyboardButton(text="Back", callback_data="Kita_back")]]
                     ),
                 )
 
@@ -332,7 +332,7 @@ def help_button(update, context):
     mod_match = re.match(r"help_module\((.+?)\)", query.data)
     prev_match = re.match(r"help_prev\((.+?)\)", query.data)
     next_match = re.match(r"help_next\((.+?)\)", query.data)
-    back_match = re.match(r"help_back", query.data)
+    back_match = re.match(r"Kita_back", query.data)
 
     print(query.message.chat.id)
 
@@ -350,7 +350,7 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="[ Back ]", callback_data="help_back")]]
+                    [[InlineKeyboardButton(text="[ Back ]", callback_data="Kita_back")]]
                 ),
             )
 
@@ -401,7 +401,7 @@ def asuna_callback_data(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="[Back]", callback_data="help_back")
+                    InlineKeyboardButton(text="[Back]", callback_data="Kita_back")
                  ]
                 ]
             ),
@@ -456,7 +456,7 @@ def get_help(update, context):
             chat.id,
             text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="[Back]", callback_data="help_back")]]
+                [[InlineKeyboardButton(text="[Back]", callback_data="Kita_back")]]
             ),
         )
 
