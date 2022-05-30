@@ -20,7 +20,7 @@ def alive(update: Update, context: CallbackContext):
             [
                 [
                 InlineKeyboardButton(text="【Support】", url="https://t.me/kitaxsupport"),
-                InlineKeyboardButton(text="【Support】", url="https://t.me/kitaxupdates")
+                InlineKeyboardButton(text="【Updates】", url="https://t.me/kitaxupdates")
                 ],
                 [InlineKeyboardButton(text="【V๏ɪ፝֟𝔡】Network", url="https://t.me/voidxnetwork")]
             ]
