@@ -92,6 +92,21 @@ def info(update, context):
     user_id = extract_user(update.effective_message, args)
     chat = update.effective_chat
 
+    buttons = [
+    [
+                       InlineKeyboardButton(
+                            text="Health", url="https://t.me/kitaxupdates/13"),
+                       InlineKeyboardButton(
+                            text="Disaster", url="https://t.me/kitaxupdates/10"),
+                    ],
+    [
+                       InlineKeyboardButton(
+                            text="[❌]", callback_data="delete_"),
+
+                    ],
+    ]
+
+
     if user_id:
         user = context.bot.get_chat(user_id)
 
@@ -188,6 +203,7 @@ def info(update, context):
             photo=profile,
             caption=text,
             parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(buttons),
         )
     except IndexError:
         context.bot.sendChatAction(chat.id, "typing")
@@ -195,6 +211,13 @@ def info(update, context):
     finally:
         del_msg.delete()
 
+
+def delete_btn(update, context):
+    query = update.callback_query
+    if query.data == "delete":
+        query.message.delete()
+    elif query.data == "delete_":
+         query.message.delete()
 
 @typing_action
 def echo(update, _):
@@ -600,7 +623,11 @@ SRC_HANDLER = CommandHandler(
 )
 PASTE_HANDLER = DisableAbleCommandHandler("paste", paste, run_async=True)
 
+DELETE_HANDLER = CallbackQueryHandler(
+        delete_btn, pattern=r"delete_", run_async=True)
+
 dispatcher.add_handler(UD_HANDLER)
+dispatcher.add_handler(DELETE_HANDLER)
 dispatcher.add_handler(ID_HANDLER)
 dispatcher.add_handler(INFO_HANDLER)
 dispatcher.add_handler(ECHO_HANDLER)
