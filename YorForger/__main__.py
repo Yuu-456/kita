@@ -393,7 +393,7 @@ def help_button(update, context):
 def asuna_callback_data(update, context):
     query = update.callback_query
     uptime = get_readable_time((time.time() - StartTime))
-    if query.data == "Kita_":
+    if query.data == "help_back":
         query.message.edit_text(
             text="""CallBackQueriesData Here""",
             parse_mode=ParseMode.MARKDOWN,
@@ -406,7 +406,7 @@ def asuna_callback_data(update, context):
                 ]
             ),
         )
-    elif query.data == "Kita_back":
+    elif query.data == "Yor_back":
         first_name = update.effective_user.first_name
         query.message.edit_text(
                 PM_START_TEXT.format(
