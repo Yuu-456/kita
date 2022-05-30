@@ -96,7 +96,7 @@ Konichiwa `{}`.
 ┏━━━━━━━━━━━━━━━━━━━━
 × *Working since:* `{}`
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
-× `{}` *Teammates, Across* `{}` *Chat groups.*
+× `{}` *Teammates, Across* `{}` *Chatgroups.*
 ┗━━━━━━━━━━━━━━━━━━━━
 *Try The /help Button Below To Know My Abilities!*
 """
@@ -256,7 +256,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
                 update.effective_message.reply_photo(
-            START_IMG, caption="Kita Working Since: <code>{}</code>".format(
+            START_IMG, caption="<b>Kita Working Since: <code>{}</code>".format(
                 uptime,
             ),
             parse_mode=ParseMode.HTML,
@@ -327,166 +327,103 @@ def error_callback(update, context):
         # handle all other telegram related errors
 
 
-def help_button(update, context):
+def settings_button(update: Update, context: CallbackContext):
     query = update.callback_query
-    mod_match = re.match(r"help_module\((.+?)\)", query.data)
-    prev_match = re.match(r"help_prev\((.+?)\)", query.data)
-    next_match = re.match(r"help_next\((.+?)\)", query.data)
-    back_match = re.match(r"help_back", query.data)
-
-    print(query.message.chat.id)
-
+    user = update.effective_user
+    bot = context.bot
+    mod_match = re.match(r"stngs_module\((.+?),(.+?)\)", query.data)
+    prev_match = re.match(r"stngs_prev\((.+?),(.+?)\)", query.data)
+    next_match = re.match(r"stngs_next\((.+?),(.+?)\)", query.data)
+    back_match = re.match(r"stngs_back\((.+?)\)", query.data)
     try:
         if mod_match:
-            module = mod_match.group(1)
-            text = (
-                "╒═══「 *{}* module: 」\n".format(
-                    HELPABLE[module].__mod_name__
-                )
-                + HELPABLE[module].__help__
-            )
-            query.message.edit_text(
+            chat_id = mod_match.group(1)
+            module = mod_match.group(2)
+            chat = bot.get_chat(chat_id)
+            text = "*{}* has the following settings for the *{}* module:\n\n".format(
+                escape_markdown(chat.title), CHAT_SETTINGS[module].__mod_name__
+            ) + CHAT_SETTINGS[module].__chat_settings__(chat_id, user.id)
+            query.message.reply_text(
                 text=text,
                 parse_mode=ParseMode.MARKDOWN,
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="Go Back", callback_data="help_back")]]
-                ),
-            )
-
-        elif prev_match:
-            curr_page = int(prev_match.group(1))
-            query.message.edit_text(
-                text=HELP_STRINGS,
-                parse_mode=ParseMode.MARKDOWN,
-                reply_markup=InlineKeyboardMarkup(
-                    paginate_modules(curr_page - 1, HELPABLE, "help")
-                ),
-            )
-
-        elif next_match:
-            next_page = int(next_match.group(1))
-            query.message.edit_text(
-                text=HELP_STRINGS,
-                parse_mode=ParseMode.MARKDOWN,
-                reply_markup=InlineKeyboardMarkup(
-                    paginate_modules(next_page + 1, HELPABLE, "help")
-                ),
-            )
-
-        elif back_match:
-            query.message.edit_text(
-                text=HELP_STRINGS,
-                parse_mode=ParseMode.MARKDOWN,
-                reply_markup=InlineKeyboardMarkup(
-                    paginate_modules(0, HELPABLE, "help")
-                ),
-            )
-
-        # ensure no spinny white circle
-        context.bot.answer_callback_query(query.id)
-        # query.message.delete()
-
-    except BadRequest:
-        pass
-
-# def asuna_callback_data(update, context):
-#     query = update.callback_query
-#     uptime = get_readable_time((time.time() - StartTime))
-#     if query.data == "help_back":
-#         query.message.edit_text(
-#             text="""CallBackQueriesData Here""",
-#             parse_mode=ParseMode.MARKDOWN,
-#             disable_web_page_preview=True,
-#             reply_markup=InlineKeyboardMarkup(
-#                 [
-#                  [
-#                     InlineKeyboardButton(text="[Back]", callback_data="help_back")
-#                  ]
-#                 ]
-#             ),
-#         )
-    # elif query.data == "Yor_back":
-    #     first_name = update.effective_user.first_name
-    #     query.message.edit_text(
-    #             PM_START_TEXT.format(
-    #                 escape_markdown(context.bot.first_name),
-    #                 escape_markdown(first_name),
-    #                 escape_markdown(uptime),
-    #                 sql.num_users(),
-    #                 sql.num_chats()),
-    #             reply_markup=InlineKeyboardMarkup(buttons),
-    #             parse_mode=ParseMode.MARKDOWN,
-    #             timeout=60,
-    #     )
-def kita_about_callback(update, context):
-    query = update.callback_query
-    if query.data == "Shikimori_":
-        query.message.edit_text(
-            text="๏ I'm *Shikimori*, a powerful group management bot built to help you manage your group easily."
-            "\n• I can restrict users."
-            "\n• I can greet users with customizable welcome messages and even set a group's rules."
-            "\n• I have an advanced anti-flood system."
-            "\n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc."
-            "\n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords."
-            "\n• I check for admins' permissions before executing any command and more stuffs"
-            "\n\n_Shikimori's licensed under the GNU General Public License v3.0_"
-            "\n\n Click on button bellow to get basic help for ShikimoriBot.",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="Back", callback_data="Kita_back")
-                 ]
-                ]   
-            ),
-        )
-    elif query.data == "Kita_back":
-        first_name = update.effective_user.first_name
-        uptime = get_readable_time((time.time() - StartTime))
-        query.message.edit_text(
-                PM_START_TEXT.format(
-                    escape_markdown(first_name)),
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
-        )
-
-
-
-@typing_action
-def get_help(update: Update, context: CallbackContext):
-    chat = update.effective_chat  # type: Optional[Chat]
-    args = update.effective_message.text.split(None, 1)
-
-    # ONLY send help in PM
-    if chat.type != chat.PRIVATE:
-        if len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
-            module = args[1].lower()
-            update.effective_message.reply_text(START_IMG, HELP_MSG,
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                text="Help",
-                                url="t.me/{}?start=ghelp_{}".format(
-                                    context.bot.username, module
-                                ),
+                                text="Go Back",
+                                callback_data="stngs_back({})".format(chat_id),
                             )
                         ]
                     ]
                 ),
             )
-            return
-        update.effective_message.reply_text(
+
+        elif prev_match:
+            chat_id = prev_match.group(1)
+            curr_page = int(prev_match.group(2))
+            chat = bot.get_chat(chat_id)
+            query.message.reply_text(
+                "Hi there! There are quite a few settings for {} - go ahead and pick what "
+                "you're interested in.".format(chat.title),
+                reply_markup=InlineKeyboardMarkup(
+                    paginate_modules(
+                        curr_page - 1, CHAT_SETTINGS, "stngs", chat=chat_id
+                    )
+                ),
+            )
+
+        elif next_match:
+            chat_id = next_match.group(1)
+            next_page = int(next_match.group(2))
+            chat = bot.get_chat(chat_id)
+            query.message.reply_text(
+                "Hi there! There are quite a few settings for {} - go ahead and pick what "
+                "you're interested in.".format(chat.title),
+                reply_markup=InlineKeyboardMarkup(
+                    paginate_modules(
+                        next_page + 1, CHAT_SETTINGS, "stngs", chat=chat_id
+                    )
+                ),
+            )
+
+        elif back_match:
+            chat_id = back_match.group(1)
+            chat = bot.get_chat(chat_id)
+            query.message.reply_text(
+                text="Hi there! There are quite a few settings for {} - go ahead and pick what "
+                "you're interested in.".format(escape_markdown(chat.title)),
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup(
+                    paginate_modules(0, CHAT_SETTINGS, "stngs", chat=chat_id)
+                ),
+            )
+
+        # ensure no spinny white circle
+        bot.answer_callback_query(query.id)
+        query.message.delete()
+    except BadRequest as excp:
+        if excp.message not in [
+            "Message is not modified",
+            "Query_id_invalid",
+            "Message can't be deleted",
+        ]:
+            LOGGER.exception("Exception in settings buttons. %s", str(query.data))
+
+@typing_action
+def get_help(update, context):
+    chat = update.effective_chat  # type: Optional[Chat]
+    args = update.effective_message.text.split(None, 1)
+
+    # ONLY send help in PM
+    if chat.type != chat.PRIVATE:
+
+        update.effective_message.reply_photo(          
             START_IMG, HELP_MSG,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(
-                            text="Help",
+                            text="Open In Private Chat",
                             url="t.me/{}?start=help".format(context.bot.username),
                         )
                     ]
@@ -495,10 +432,10 @@ def get_help(update: Update, context: CallbackContext):
         )
         return
 
-    elif len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
+    if len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
         module = args[1].lower()
         text = (
-            "Here is the available help for the *{}* module:\n".format(
+            " 〔 *{}* 〕\n".format(
                 HELPABLE[module].__mod_name__
             )
             + HELPABLE[module].__help__
@@ -507,7 +444,7 @@ def get_help(update: Update, context: CallbackContext):
             chat.id,
             text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Go Back", callback_data="help_back")]]
+                [[InlineKeyboardButton(text="[Back]", callback_data="help_back")]]
             ),
         )
 
@@ -730,11 +667,11 @@ def main():
     settings_handler = DisableAbleCommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
-    data_callback_handler = CallbackQueryHandler(kita_about_callback, pattern=r"asuna_")
+    data_callback_handler = CallbackQueryHandler(asuna_callback_data, pattern=r"asuna_")
     donate_handler = DisableAbleCommandHandler("donate", donate)
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
 
-    dispatcher.add_handler(test_handler)
+    # dispatcher.add_handler(test_handler)
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(data_callback_handler)
@@ -757,7 +694,7 @@ def main():
 
     else:
         LOGGER.info(f"Kita deployed. | BOT: [@KitaxRobot]")
-        updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True)
+        updater.start_polling(timeout=15, read_latency=4, clean=True)
 
     if len(argv) not in (1, 3, 4):
         telethn.disconnect()
