@@ -363,6 +363,7 @@ def settings_button(update: Update, context: CallbackContext):
                             )
                         ]
                     ]
+                    [[InlineKeyboardButton(text="[ Back ]", callback_data="help_back")]]
                 ),
             )
 
@@ -416,6 +417,42 @@ def settings_button(update: Update, context: CallbackContext):
             "Message can't be deleted",
         ]:
             LOGGER.exception("Exception in settings buttons. %s", str(query.data))
+        context.bot.answer_callback_query(query.id)
+        # query.message.delete()
+
+    except BadRequest:
+        pass
+
+def asuna_callback_data(update, context):
+    query = update.callback_query
+    uptime = get_readable_time((time.time() - StartTime))
+    if query.data == "Kita_":
+        query.message.edit_text(
+            text="""CallBackQueriesData Here""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="[Back]", callback_data="help_back")
+                 ]
+                ]
+            ),
+        )
+    elif query.data == "Kita_back":
+        first_name = update.effective_user.first_name
+        query.message.edit_text(
+                PM_START_TEXT.format(
+                    escape_markdown(context.bot.first_name),
+                    escape_markdown(first_name),
+                    escape_markdown(uptime),
+                    sql.num_users(),
+                    sql.num_chats()),
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+        )
+
 
 @typing_action
 def get_help(update, context):
