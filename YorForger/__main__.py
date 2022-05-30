@@ -1,3 +1,4 @@
+
 import html
 import os
 import json
@@ -256,7 +257,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
                 update.effective_message.reply_photo(
-            START_IMG, caption="<b>Kita Working Since: <code>{}</code>".format(
+            START_IMG, caption="Kita Working Since: <code>{}</code>".format(
                 uptime,
             ),
             parse_mode=ParseMode.HTML,
@@ -332,7 +333,7 @@ def help_button(update, context):
     mod_match = re.match(r"help_module\((.+?)\)", query.data)
     prev_match = re.match(r"help_prev\((.+?)\)", query.data)
     next_match = re.match(r"help_next\((.+?)\)", query.data)
-    back_match = re.match(r"help_back\((.+?)\)", query.data)
+    back_match = re.match(r"help_back", query.data)
 
     print(query.message.chat.id)
 
@@ -707,7 +708,7 @@ def main():
 
     else:
         LOGGER.info(f"Kita deployed. | BOT: [@KitaxRobot]")
-        updater.start_polling(timeout=15, read_latency=4, clean=True)
+        updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True)
 
     if len(argv) not in (1, 3, 4):
         telethn.disconnect()
