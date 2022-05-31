@@ -1,9 +1,9 @@
 <h2 align="center">
-    ──「 Shinsuke Kita, A ANIME THEAMED MODULAR BOT 」──
+    ──「 SHINSUKE KITA, A ANIME THEAMED MODULAR BOT 」──
 </h2>
 
 <p align="center">
-  <img src="https://telegra.ph/file/ef37aece4ca3ca7c529ac.jpg">
+  <img src="https://telegra.ph/file/e7e8f1f8e7913fc563f89.jpg">
 </p>
 
 <p align="center">
