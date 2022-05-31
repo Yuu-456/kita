@@ -94,7 +94,7 @@ def paginate_modules(page_n, module_dict, prefix, chat=None):
                     callback_data="{}_prev({})".format(prefix, modulo_page),
                 ),
                 InlineKeyboardButton(
-                            text="[❌]", callback_data="delete_"),
+                            text="Cancel", callback_data="delete_"),
                 EqInlineKeyboardButton(
                     "❯",
                     callback_data="{}_next({})".format(prefix, modulo_page),
